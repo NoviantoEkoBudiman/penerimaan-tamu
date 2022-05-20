@@ -19,13 +19,18 @@ https://templatemo.com/tm-540-lava-landing-page
 -->
 
     <!-- Additional CSS Files -->
-    <link rel="stylesheet" type="text/css" href="{{asset('user_template/assets/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('user_template/assets/css/bootstrap.min.css') }}">
 
-    <link rel="stylesheet" type="text/css" href="{{asset('user_template/assets/css/font-awesome.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('user_template/assets/css/font-awesome.css') }}">
 
-    <link rel="stylesheet" href="{{asset('user_template/assets/css/templatemo-lava.css')}}">
+    <link rel="stylesheet" href="{{ asset('user_template/assets/css/templatemo-lava.css') }}">
 
-    <link rel="stylesheet" href="{{asset('user_template/assets/css/owl-carousel.css')}}">
+    <link rel="stylesheet" href="{{ asset('user_template/assets/css/owl-carousel.css') }}">
+
+    <!-- FullCalendar -->
+    <link href="{{ asset('fullcalendar/lib/main.css') }}" rel='stylesheet' />
+    <script src='{{ asset('fullcalendar/lib/main.js') }}'></script>
+    <script src='{{ asset('fullcalendar/lib/locales-all.min.js') }}'></script>
 
 </head>
 

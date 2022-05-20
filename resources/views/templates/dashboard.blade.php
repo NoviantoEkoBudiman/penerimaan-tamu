@@ -27,6 +27,11 @@ https://templatemo.com/tm-540-lava-landing-page
 
     <link rel="stylesheet" href="{{asset('user_template/assets/css/owl-carousel.css')}}">
 
+    <!-- FullCalendar -->
+    <link href="{{ asset('fullcalendar/lib/main.css') }}" rel='stylesheet' />
+    <script src='{{ asset('fullcalendar/lib/main.js') }}'></script>
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/locales-all.min.js'></script>
+
 </head>
 
 <body>
@@ -57,7 +62,7 @@ https://templatemo.com/tm-540-lava-landing-page
                         <ul class="nav">
                             <li><a href="{{ url('/') }}" class="menu-item">Beranda</a></li>
                             <li><a href="{{ route('tatacara.index') }}" class="menu-item">Reservasi</a></li>
-                            <li><a href="{{ url('/') }}" class="menu-item">Jadwal Penerimaan</a></li>
+                            <li><a href="{{ route('jadwal.index') }}" class="menu-item">Jadwal Penerimaan</a></li>
                             <li><a href="{{ url('/') }}" class="menu-item">Galeri</a></li>
                             <li><a href="{{ url('/') }}" class="menu-item">Peta Balai Kota</a></li>
                             <li><a href="{{ url('login') }}" class="menu-item">Login</a></li>
