@@ -19,13 +19,13 @@ https://templatemo.com/tm-540-lava-landing-page
 -->
 
     <!-- Additional CSS Files -->
-    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{{asset('user_template/assets/css/bootstrap.min.css')}}">
 
-    <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="{{asset('user_template/assets/css/font-awesome.css')}}">
 
-    <link rel="stylesheet" href="assets/css/templatemo-lava.css">
+    <link rel="stylesheet" href="{{asset('user_template/assets/css/templatemo-lava.css')}}">
 
-    <link rel="stylesheet" href="assets/css/owl-carousel.css">
+    <link rel="stylesheet" href="{{asset('user_template/assets/css/owl-carousel.css')}}">
 
 </head>
 
@@ -55,20 +55,8 @@ https://templatemo.com/tm-540-lava-landing-page
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
-                            <li class="scroll-to-section"><a href="#welcome" class="menu-item">Home</a></li>
-                            <li class="scroll-to-section"><a href="#about" class="menu-item">About</a></li>
-                            <li class="scroll-to-section"><a href="#testimonials" class="menu-item">Testimonials</a>
-                            </li>
-                            <li class="submenu">
-                                <a href="javascript:;">Drop Down</a>
-                                <ul>
-                                    <li><a href="" class="menu-item">About Us</a></li>
-                                    <li><a href="" class="menu-item">Features</a></li>
-                                    <li><a href="" class="menu-item">FAQ's</a></li>
-                                    <li><a href="" class="menu-item">Blog</a></li>
-                                </ul>
-                            </li>
-                            <li class="scroll-to-section"><a href="#contact-us" class="menu-item">Contact Us</a></li>
+                            <li><a href="{{ url('/') }}" class="menu-item">Beranda</a></li>
+                            <li><a href="{{ url('login') }}" class="menu-item">Login</a></li>
                         </ul>
                         <a class='menu-trigger'>
                             <span>Menu</span>
@@ -87,23 +75,13 @@ https://templatemo.com/tm-540-lava-landing-page
 
         <!-- ***** Header Text Start ***** -->
         <div class="header-text">
-            <div class="container">
-                <div class="row">
-                    <div class="left-text col-lg-6 col-md-12 col-sm-12 col-xs-12"
-                        data-scroll-reveal="enter left move 30px over 0.6s after 0.4s">
-                        <h1>Simple App that we <em>CREATE</em></h1>
-                        <p>Lava <a href="#">HTML landing page</a> template is provided by <a href="#">TemplateMo</a>.
-                           You can modify and use it for your commercial websites for free of charge. This template is last updated on 29 Oct 2019.</p> 
-                        <a href="#about" class="main-button-slider">KNOW US BETTER</a>
-                    </div>
-                </div>
-            </div>
+            @yield('content')
         </div>
         <!-- ***** Header Text End ***** -->
     </div>
     <!-- ***** Welcome Area End ***** -->
 
-    <!-- ***** Features Big Item Start ***** -->
+    {{-- <!-- ***** Features Big Item Start ***** -->
     <section class="section" id="about">
         <div class="container">
             <div class="row">
@@ -112,7 +90,7 @@ https://templatemo.com/tm-540-lava-landing-page
                     <div class="features-item">
                         <div class="features-icon">
                             <h2>01</h2>
-                            <img src="assets/images/features-icon-1.png" alt="">
+                            <img src="{{ asset('user_template/assets/images/features-icon-1.png') }}" alt="">
                             <h4>Trend Analysis</h4>
                             <p>Curabitur pulvinar vel odio sed sagittis. Nam maximus ex diam, nec consectetur diam.</p>
                             <a href="#testimonials" class="main-button">
@@ -126,7 +104,7 @@ https://templatemo.com/tm-540-lava-landing-page
                     <div class="features-item">
                         <div class="features-icon">
                             <h2>02</h2>
-                            <img src="assets/images/features-icon-2.png" alt="">
+                            <img src="{{ asset('user_template/assets/images/features-icon-2.png') }}" alt="">
                             <h4>Site Optimization</h4>
                             <p>Curabitur pulvinar vel odio sed sagittis. Nam maximus ex diam, nec consectetur diam.</p>
                             <a href="#testimonials" class="main-button">
@@ -140,7 +118,7 @@ https://templatemo.com/tm-540-lava-landing-page
                     <div class="features-item">
                         <div class="features-icon">
                             <h2>03</h2>
-                            <img src="assets/images/features-icon-3.png" alt="">
+                            <img src="{{ asset('user_template/assets/images/features-icon-3.png') }}" alt="">
                             <h4>Email Design</h4>
                             <p>Curabitur pulvinar vel odio sed sagittis. Nam maximus ex diam, nec consectetur diam.</p>
                             <a href="#testimonials" class="main-button">
@@ -162,12 +140,12 @@ https://templatemo.com/tm-540-lava-landing-page
             <div class="row">
                 <div class="left-image col-lg-5 col-md-12 col-sm-12 mobile-bottom-fix-big"
                     data-scroll-reveal="enter left move 30px over 0.6s after 0.4s">
-                    <img src="assets/images/left-image.png" class="rounded img-fluid d-block mx-auto" alt="App">
+                    <img src="{{ asset('user_template/assets/images/left-image.png') }}" class="rounded img-fluid d-block mx-auto" alt="App">
                 </div>
                 <div class="right-text offset-lg-1 col-lg-6 col-md-12 col-sm-12 mobile-bottom-fix">
                     <ul>
                         <li data-scroll-reveal="enter right move 30px over 0.6s after 0.4s">
-                            <img src="assets/images/about-icon-01.png" alt="">
+                            <img src="{{ asset('user_template/assets/images/about-icon-01.png') }}" alt="">
                             <div class="text">
                                 <h4>Vestibulum pulvinar rhoncus</h4>
                                 <p>Please do not redistribute this template ZIP file for a download purpose. You may <a
@@ -176,7 +154,7 @@ https://templatemo.com/tm-540-lava-landing-page
                             </div>
                         </li>
                         <li data-scroll-reveal="enter right move 30px over 0.6s after 0.5s">
-                            <img src="assets/images/about-icon-02.png" alt="">
+                            <img src="{{ asset('user_template/assets/images/about-icon-02.png') }}" alt="">
                             <div class="text">
                                 <h4>Sed blandit quam in velit</h4>
                                 <p>You can <a rel="nofollow"
@@ -186,7 +164,7 @@ https://templatemo.com/tm-540-lava-landing-page
                             </div>
                         </li>
                         <li data-scroll-reveal="enter right move 30px over 0.6s after 0.6s">
-                            <img src="assets/images/about-icon-03.png" alt="">
+                            <img src="{{ asset('user_template/assets/images/about-icon-03.png') }}" alt="">
                             <div class="text">
                                 <h4>Aenean faucibus venenatis</h4>
                                 <p>Phasellus in imperdiet felis, eget vestibulum nulla. Aliquam nec dui nec augue
@@ -218,7 +196,7 @@ https://templatemo.com/tm-540-lava-landing-page
                     <div class="owl-carousel owl-theme">
                         <div class="item service-item">
                             <div class="author">
-                                <i><img src="assets/images/testimonial-author-1.png" alt="Author One"></i>
+                                <i><img src="{{ asset('user_template/assets/images/testimonial-author-1.png') }}" alt="Author One"></i>
                             </div>
                             <div class="testimonial-content">
                                 <ul class="stars">
@@ -236,7 +214,7 @@ https://templatemo.com/tm-540-lava-landing-page
                         </div>
                         <div class="item service-item">
                             <div class="author">
-                                <i><img src="assets/images/testimonial-author-1.png" alt="Second Author"></i>
+                                <i><img src="{{ asset('user_template/assets/images/testimonial-author-1.png') }}" alt="Second Author"></i>
                             </div>
                             <div class="testimonial-content">
                                 <ul class="stars">
@@ -254,7 +232,7 @@ https://templatemo.com/tm-540-lava-landing-page
                         </div>
                         <div class="item service-item">
                             <div class="author">
-                                <i><img src="assets/images/testimonial-author-1.png" alt="Author Third"></i>
+                                <i><img src="{{ asset('user_template/assets/images/testimonial-author-1.png') }}" alt="Author Third"></i>
                             </div>
                             <div class="testimonial-content">
                                 <ul class="stars">
@@ -270,7 +248,7 @@ https://templatemo.com/tm-540-lava-landing-page
                         </div>
                         <div class="item service-item">
                             <div class="author">
-                                <i><img src="assets/images/testimonial-author-1.png" alt="Fourth Author"></i>
+                                <i><img src="{{ asset('user_template/assets/images/testimonial-author-1.png') }}" alt="Fourth Author"></i>
                             </div>
                             <div class="testimonial-content">
                                 <ul class="stars">
@@ -359,24 +337,24 @@ https://templatemo.com/tm-540-lava-landing-page
                 </div>
             </div>
         </div>
-    </footer>
+    </footer> --}}
 
     <!-- jQuery -->
-    <script src="assets/js/jquery-2.1.0.min.js"></script>
+    <script src="{{ asset('user_template/assets/js/jquery-2.1.0.min.js') }}"></script>
 
     <!-- Bootstrap -->
-    <script src="assets/js/popper.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="{{ asset('user_template/assets/js/popper.js') }}"></script>
+    <script src="{{ asset('user_template/assets/js/bootstrap.min.js') }}"></script>
 
     <!-- Plugins -->
-    <script src="assets/js/owl-carousel.js"></script>
-    <script src="assets/js/scrollreveal.min.js"></script>
-    <script src="assets/js/waypoints.min.js"></script>
-    <script src="assets/js/jquery.counterup.min.js"></script>
-    <script src="assets/js/imgfix.min.js"></script>
+    <script src="{{ asset('user_template/assets/js/owl-carousel.js') }}"></script>
+    <script src="{{ asset('user_template/assets/js/scrollreveal.min.js') }}"></script>
+    <script src="{{ asset('user_template/assets/js/waypoints.min.js') }}"></script>
+    <script src="{{ asset('user_template/assets/js/jquery.counterup.min.js') }}"></script>
+    <script src="{{ asset('user_template/assets/js/imgfix.min.js') }}"></script>
 
     <!-- Global Init -->
-    <script src="assets/js/custom.js"></script>
+    <script src="{{ asset('user_template/assets/js/custom.js') }}"></script>
 
 </body>
 </html>

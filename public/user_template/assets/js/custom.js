@@ -76,22 +76,22 @@
 	$(document).ready(function () {
 		$('a[href^="#welcome"]').addClass('active');
 
-		//smoothscroll
-		$('.menu-item').on('click', function (e) {
-			e.preventDefault();
-			var athis = this;
-			var target = this.hash,
-				menu = target;
-			var $target = $(target);
+		// //smoothscroll
+		// $('.menu-item').on('click', function (e) {
+		// 	e.preventDefault();
+		// 	var athis = this;
+		// 	var target = this.hash,
+		// 		menu = target;
+		// 	var $target = $(target);
 
-			$('html, body').stop().animate({
-				'scrollTop': $target.offset().top
-			}, 500, 'swing', function () {
-				window.location.hash = target;
-				$('.menu-item').removeClass('active');
-				$(athis).addClass('active');
-			});
-		});
+		// 	$('html, body').stop().animate({
+		// 		'scrollTop': $target.offset().top
+		// 	}, 500, 'swing', function () {
+		// 		window.location.hash = target;
+		// 		$('.menu-item').removeClass('active');
+		// 		$(athis).addClass('active');
+		// 	});
+		// });
 
 		$(window).scroll(function (event) {
 			var scrollPos = $(document).scrollTop() + 80;
