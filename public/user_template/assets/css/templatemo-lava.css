@@ -678,15 +678,24 @@ welcome
   color: #191a20;
 }
 
-.welcome-area .header-text h1 em {
+.table-tata-cara{
+  width: 800px;
+}
+
+.table-tata-cara tr td{
+  vertical-align: top;
+}
+
+.header-text{
+  font-style: normal;
+  text-align: center;
+}
+
+.header-text h1 em {
   font-style: normal;
   color: #fba70b;
 }
 
-/* .welcome-area .header-text h2 em {
-  font-style: normal;
-  color: #fba70b;
-} */
 .welcome-area .header-text h2 em {
   font-style: normal;
   color: #fba70b;

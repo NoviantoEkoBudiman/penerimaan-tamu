@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GoogleController;
+use App\Http\Controllers\TataCaraController;
+use App\Http\Controllers\ReservasiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,12 +17,15 @@ use App\Http\Controllers\GoogleController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('front/beranda');
 });
 
 Route::get('login/', function(){
-    return view('pilih_login');
+    return view('front/pilih_login');
 });
+
+Route::resource('tatacara',TataCaraController::class);
+Route::resource('reservasi',ReservasiController::class);
 
 Route::get('login/google',[GoogleController::class,'login']);
 Route::get('login/google/callback',[GoogleController::class,'callback']);

@@ -1,4 +1,4 @@
-@extends('templates/user2')
+@extends('templates/user')
 @section('content')
 <!-- ***** Features Big Item Start ***** -->
 <div class="container">

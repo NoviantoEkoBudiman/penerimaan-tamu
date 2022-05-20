@@ -56,6 +56,10 @@ https://templatemo.com/tm-540-lava-landing-page
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
                             <li><a href="{{ url('/') }}" class="menu-item">Beranda</a></li>
+                            <li><a href="{{ url('/') }}" class="menu-item">Reservasi</a></li>
+                            <li><a href="{{ url('/') }}" class="menu-item">Jadwal Penerimaan</a></li>
+                            <li><a href="{{ url('/') }}" class="menu-item">Galeri</a></li>
+                            <li><a href="{{ url('/') }}" class="menu-item">Peta Balai Kota</a></li>
                             <li><a href="{{ url('login') }}" class="menu-item">Login</a></li>
                         </ul>
                         <a class='menu-trigger'>
@@ -71,10 +75,10 @@ https://templatemo.com/tm-540-lava-landing-page
 
 
     <!-- ***** Welcome Area Start ***** -->
-    <div class="welcome-area" id="welcome">
+    <div id="welcome">
 
         <!-- ***** Header Text Start ***** -->
-        <div class="header-text">
+        <div class="header-text" style="margin-top: 10%">
             @yield('content')
         </div>
         <!-- ***** Header Text End ***** -->

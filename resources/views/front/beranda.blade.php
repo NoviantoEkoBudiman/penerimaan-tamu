@@ -1,4 +1,4 @@
-@extends('templates/user')
+@extends('templates/dashboard')
 @section('content')
 <div class="container">
     <div class="row">
