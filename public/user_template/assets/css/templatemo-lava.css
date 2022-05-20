@@ -683,6 +683,10 @@ welcome
   color: #fba70b;
 }
 
+/* .welcome-area .header-text h2 em {
+  font-style: normal;
+  color: #fba70b;
+} */
 .welcome-area .header-text h2 em {
   font-style: normal;
   color: #fba70b;
