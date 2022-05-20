@@ -13,7 +13,7 @@ class ReservasiController extends Controller
      */
     public function index()
     {
-        return "ini halaman reservasi";
+        return view('reservasi/front/main');
     }
 
     /**
