@@ -14,9 +14,9 @@ return new class extends Migration
     public function up()
     {
         Schema::create('tata_cara', function (Blueprint $table) {
-            $table->id();
-            $table->text('isi');
-            $table->boolean('aktif');
+            $table->increments('id_tata_cara');
+            $table->text('tata_cara_isi');
+            $table->boolean('tata_cara_aktif');
             $table->timestamps();
         });
     }
