@@ -1,8 +1,8 @@
 @extends('templates/user')
 @section('content')
-{{-- <div class="container"> --}}
+<div class="container">
     {{-- <div class="row"> --}}
-        <div class="text-center2" data-scroll-reveal="enter left move 30px over 0.6s after 0.4s">
+        <div class="text-center" data-scroll-reveal="enter left move 30px over 0.6s after 0.4s">
             <h1>Jadwal Pertemuan</h1>
             <em>Daftar Jadwal Pertemuan Pemerintah Kota Yogyakarta</em>
         </div>
@@ -105,5 +105,5 @@
         <div id='calendar'></div>
 
     {{-- </div> --}}
-{{-- </div> --}}
+</div>
 @endsection

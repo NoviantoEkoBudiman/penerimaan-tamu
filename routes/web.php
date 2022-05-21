@@ -5,6 +5,7 @@ use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\TataCaraController;
 use App\Http\Controllers\ReservasiController;
 use App\Http\Controllers\JadwalPenerimaanController;
+use App\Http\Controllers\GalleryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,12 +26,15 @@ Route::get('login/', function(){
     return view('front/pilih_login');
 });
 
-Route::resource('tatacara',TataCaraController::class);
-Route::resource('reservasi',ReservasiController::class);
-Route::resource('jadwal',JadwalPenerimaanController::class);
+
 Route::get('peta', function(){
     return view('peta/main');
 });
+
+Route::resource('tatacara',TataCaraController::class);
+Route::resource('reservasi',ReservasiController::class);
+Route::resource('jadwal',JadwalPenerimaanController::class);
+Route::resource('gallery',GalleryController::class);
 
 Route::get('login/google',[GoogleController::class,'login']);
 Route::get('login/google/callback',[GoogleController::class,'callback']);
