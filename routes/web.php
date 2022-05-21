@@ -28,6 +28,9 @@ Route::get('login/', function(){
 Route::resource('tatacara',TataCaraController::class);
 Route::resource('reservasi',ReservasiController::class);
 Route::resource('jadwal',JadwalPenerimaanController::class);
+Route::get('peta', function(){
+    return view('peta/main');
+});
 
 Route::get('login/google',[GoogleController::class,'login']);
 Route::get('login/google/callback',[GoogleController::class,'callback']);

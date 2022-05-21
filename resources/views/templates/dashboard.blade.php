@@ -64,7 +64,7 @@ https://templatemo.com/tm-540-lava-landing-page
                             <li><a href="{{ route('tatacara.index') }}" class="menu-item">Reservasi</a></li>
                             <li><a href="{{ route('jadwal.index') }}" class="menu-item">Jadwal Penerimaan</a></li>
                             <li><a href="{{ url('/') }}" class="menu-item">Galeri</a></li>
-                            <li><a href="{{ url('/') }}" class="menu-item">Peta Balai Kota</a></li>
+                            <li><a href="{{ url('peta') }}" class="menu-item">Peta Balai Kota</a></li>
                             <li><a href="{{ url('login') }}" class="menu-item">Login</a></li>
                         </ul>
                         <a class='menu-trigger'>
