@@ -12,7 +12,7 @@ class TataCara extends Model
     protected $table = 'tata_cara';
 
     protected $fillable = [
-        'isi',
-        'aktif',
+        'tata_cara_isi',
+        'tata_cara_aktif',
     ];
 }

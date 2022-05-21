@@ -15,7 +15,7 @@ class TataCaraController extends Controller
      */
     public function index()
     {
-        $list_data = DB::table('tata_cara')->where('aktif',1)->get();
+        $list_data = DB::table('tata_cara')->where('tata_cara_aktif',1)->get();
         return view('front/tatacara', compact('list_data'));
     }
 
