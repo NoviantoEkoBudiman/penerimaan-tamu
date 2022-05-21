@@ -15,13 +15,12 @@
         </table>
     </div>
     <hr>
-    <table>
+    {{-- <table>
         <tr>
             <td><input type="checkbox" class="form-control" id="setuju" onchange="document.getElementById('lanjutkan').disabled = !this.checked;" ></td>
             <td style="text-align: left">Saya telah membaca dan memahami Tata Cara Penerimaan Kunjungan di Pemerintahan Kota Yogyakarta</td>
         </tr>
-    </table>
-    <button class="btn btn-md btn-info">Batal</button>
+    </table> --}}
     <a class="btn btn-md btn-primary" id="lanjutkan" href="{{ route('reservasi.index') }}" disabled>Lanjutkan</a>
 </div>
 @endsection

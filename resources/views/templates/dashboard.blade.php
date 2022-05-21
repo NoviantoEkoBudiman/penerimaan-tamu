@@ -29,9 +29,13 @@ https://templatemo.com/tm-540-lava-landing-page
 
     <!-- FullCalendar -->
     <link href="{{ asset('fullcalendar/lib/main.css') }}" rel='stylesheet' />
+    
     <script src='{{ asset('fullcalendar/lib/main.js') }}'></script>
+    
     <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/locales-all.min.js'></script>
-
+    
+    <!-- SweetAlert -->
+    <script src="{{ asset('sweetalert/dist/sweetalert2.all.min.js') }}"></script>
 </head>
 
 <body>

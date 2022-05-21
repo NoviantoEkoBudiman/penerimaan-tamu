@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Reservasi;
 
 class ReservasiController extends Controller
 {
@@ -34,7 +35,75 @@ class ReservasiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'reservasi_email' => 'required',
+            'reservasi_nama' => 'required',
+            'reservasi_nama_instansi' => 'required',
+            'reservasi_kontak' => 'required',
+            'reservasi_provinsi' => 'required',
+            'reservasi_alamat' => 'required',
+            'reservasi_jadwal_berkunjung' => 'required',
+            'reservasi_topik' => 'required',
+            'reservasi_tujuan' => 'required',
+            'reservasi_jumlah_peserta' => 'required',
+            'reservasi_keterangan' => 'required',
+            'reservasi_no_surat' => 'required',
+            'reservasi_kepada' => 'required',
+            'reservasi_surat_permohonan_kunjungan' => 'required|mimes:jpg,jpeg,png',
+        ],
+        [
+            'reservasi_email.required' => 'email tidak boleh kosong',
+            'reservasi_nama.required' => 'nama tidak boleh kosong',
+            'reservasi_nama_instansi.required' => 'nama_instansi tidak boleh kosong',
+            'reservasi_kontak.required' => 'kontak tidak boleh kosong',
+            'reservasi_provinsi.required' => 'provinsi tidak boleh kosong',
+            'reservasi_alamat.required' => 'alamat tidak boleh kosong',
+            'reservasi_jadwal_berkunjung.required' => 'jadwal berkunjung tidak boleh kosong',
+            'reservasi_topik.required' => 'topik tidak boleh kosong',
+            'reservasi_tujuan.required' => 'tujuan tidak boleh kosong',
+            'reservasi_jumlah_peserta.required' => 'jumlah peserta tidak boleh kosong',
+            'reservasi_keterangan.required' => 'keterangan tidak boleh kosong',
+            'reservasi_no_surat.required' => 'no_surat tidak boleh kosong',
+            'reservasi_kepada.required' => 'kepada tidak boleh kosong',
+            'reservasi_surat_permohonan_kunjungan.required' => 'surat permohonan kunjungan tidak boleh kosong',
+            'reservasi_surat_permohonan_kunjungan.mimes' => 'format surat permohonan hanya bisa JPG, JPEG, dan PNG',
+        ]);
+
+
+        if ($request->hasFile('reservasi_surat_permohonan_kunjungan')) {
+            $path = $request->file('reservasi_surat_permohonan_kunjungan')->store('reservasi_surat_permohonan_kunjungan');
+        }else{
+            $path = "";
+        }
+
+        $reservasi = new Reservasi;
+
+        // Data Reservasi
+        $reservasi->reservasi_status_id                     = 1;
+        $reservasi->reservasi_email                         = $request->reservasi_email;
+        $reservasi->reservasi_is_read                       = 0;
+        $reservasi->reservasi_is_kirim_bukti                = 0;
+
+        //Data Pemohon
+        $reservasi->reservasi_nama                          = $request->reservasi_nama;
+        $reservasi->reservasi_nama_instansi                 = $request->reservasi_nama_instansi;
+        $reservasi->reservasi_kontak                        = $request->reservasi_kontak;
+        $reservasi->reservasi_provinsi                      = $request->reservasi_provinsi;
+        $reservasi->reservasi_alamat                        = $request->reservasi_alamat;
+
+        // Data tujuan reservasi
+        $reservasi->reservasi_jadwal_berkunjung             = $request->reservasi_jadwal_berkunjung;
+        $reservasi->reservasi_topik                         = $request->reservasi_topik;
+        $reservasi->reservasi_tujuan                        = $request->reservasi_tujuan;
+        $reservasi->reservasi_jumlah_peserta                = $request->reservasi_jumlah_peserta;
+        $reservasi->reservasi_keterangan                    = $request->reservasi_keterangan;
+        $reservasi->reservasi_no_surat                      = $request->reservasi_no_surat;
+        $reservasi->reservasi_kepada                        = $request->reservasi_kepada;
+        $reservasi->reservasi_surat_permohonan_kunjungan    = $path;
+
+        $reservasi->save();
+
+        return redirect('/');
     }
 
     /**
