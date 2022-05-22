@@ -135,7 +135,10 @@ class ReservasiController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $reservasi = Reservasi::find($id);
+        $reservasi->reservasi_status_id = $request->status;
+        $reservasi->save();
+        return redirect(route('reservasi_back'));
     }
 
     /**

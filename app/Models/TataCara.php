@@ -11,6 +11,8 @@ class TataCara extends Model
 
     protected $table = 'tata_cara';
 
+    protected $primaryKey = 'id_tata_cara';
+
     protected $fillable = [
         'tata_cara_isi',
         'tata_cara_aktif',

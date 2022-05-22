@@ -7,7 +7,7 @@
     <div class="col-lg-12 col-xlg-12 col-md-12">
         <div class="card">
             <div class="card-body">
-                <form class="form-horizontal form-material" action="{{ route('inbox.update',$id) }}" method="POST">
+                <form class="form-horizontal form-material" action="{{ route('reservasi.update',$id) }}" method="POST">
                     @csrf
                     @method('PUT')
                     <hr>

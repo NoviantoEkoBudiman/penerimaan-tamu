@@ -31,7 +31,7 @@ class TataCaraController extends Controller
      */
     public function create()
     {
-        //
+        // 
     }
 
     /**
@@ -42,7 +42,16 @@ class TataCaraController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validate = $request->validate([
+            'tata_cara_isi' => 'required',
+        ],[
+            'tata_cara_isi.required' => 'Data keterangan tata cara tidak boleh kosong',
+        ]);
+        $data = new TataCara;
+        $data->tata_cara_isi    = $request->tata_cara_isi;
+        $data->tata_cara_aktif  = 1;
+        $data->save();
+        return redirect(route('tatacara_back'));
     }
 
     /**
@@ -53,7 +62,8 @@ class TataCaraController extends Controller
      */
     public function show($id)
     {
-        //
+        $data = TataCara::find($id)->first();
+        return view('tatacara/back/edit',compact('data'));
     }
 
     /**
@@ -76,7 +86,11 @@ class TataCaraController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = TataCara::find($id);
+        $data->tata_cara_isi = $request->tata_cara_isi;
+        $data->tata_cara_aktif = $request->tata_cara_aktif;
+        $data->save();
+        return redirect(route('tatacara_back'));
     }
 
     /**
@@ -87,6 +101,8 @@ class TataCaraController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data = TataCara::find($id);
+        $data->delete();
+        return redirect(route('tatacara_back'));
     }
 }

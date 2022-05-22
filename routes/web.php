@@ -37,11 +37,8 @@ Route::resource('tatacara',TataCaraController::class);
 Route::resource('jadwal',JadwalPenerimaanController::class);
 Route::resource('gallery',GalleryController::class);
 
-Route::get('reservasi/tindakan',[ReservasiController::class,'tindakan'])->name('reservasi_back');
 Route::get('reservasi/back',[ReservasiController::class,'indexBack'])->name('reservasi_back');
 Route::resource('reservasi',ReservasiController::class);
-
-Route::resource('inbox',InboxController::class);
 
 Route::get('login/google',[GoogleController::class,'login']);
 Route::get('login/google/callback',[GoogleController::class,'callback']);
