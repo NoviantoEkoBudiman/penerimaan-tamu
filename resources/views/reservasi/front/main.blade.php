@@ -33,7 +33,7 @@
                                             Data Pemohon
                                         </div>
                                     </td>
-                                <tr>
+                                </tr>
                                 <tr>
                                     <td data-scroll-reveal="enter right move 30px over 0.6s after 0.4s">
                                         <div class="text">
@@ -124,7 +124,7 @@
                                     <td data-scroll-reveal="enter right move 30px over 0.6s after 0.4s">
                                         <div class="text">
                                             <h4>Jadwal Berkunjung:</h4>
-                                            <input type="date" name="reservasi_jadwal_berkunjung" class="form-control @error('reservasi_jadwal_berkunjung') is-invalid @enderror">
+                                            <input type="datetime-local" name="reservasi_jadwal_berkunjung" class="form-control @error('reservasi_jadwal_berkunjung') is-invalid @enderror">
                                             @error('reservasi_jadwal_berkunjung')
                                                 <div class="alert alert-danger" role="alert">
                                                     {{ $message }}
@@ -175,7 +175,7 @@
                                 <tr>
                                     <td data-scroll-reveal="enter right move 30px over 0.6s after 0.6s">
                                         <div class="text">
-                                            <h4>Keterangan</h4>
+                                            <h4>Keterangan:</h4>
                                             <input type="text" name="reservasi_keterangan" class="form-control @error('reservasi_keterangan') is-invalid @enderror">
                                             @error('reservasi_keterangan')
                                                 <div class="alert alert-danger" role="alert">

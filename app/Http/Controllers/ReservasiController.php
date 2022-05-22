@@ -18,16 +18,6 @@ class ReservasiController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -69,11 +59,11 @@ class ReservasiController extends Controller
             'reservasi_surat_permohonan_kunjungan.mimes' => 'format surat permohonan hanya bisa JPG, JPEG, dan PNG',
         ]);
 
-
         if ($request->hasFile('reservasi_surat_permohonan_kunjungan')) {
-            $path = $request->file('reservasi_surat_permohonan_kunjungan')->store('reservasi_surat_permohonan_kunjungan');
+            $imageName = time().'.'.$request->reservasi_surat_permohonan_kunjungan->getClientOriginalExtension();
+            $request->reservasi_surat_permohonan_kunjungan->move(public_path('/reservasi_surat_permohonan_kunjungan'), $imageName);
         }else{
-            $path = "";
+            $imageName = "";
         }
 
         $reservasi = new Reservasi;
@@ -99,7 +89,7 @@ class ReservasiController extends Controller
         $reservasi->reservasi_keterangan                    = $request->reservasi_keterangan;
         $reservasi->reservasi_no_surat                      = $request->reservasi_no_surat;
         $reservasi->reservasi_kepada                        = $request->reservasi_kepada;
-        $reservasi->reservasi_surat_permohonan_kunjungan    = $path;
+        $reservasi->reservasi_surat_permohonan_kunjungan    = $imageName;
 
         $reservasi->save();
 
