@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\TataCara;
-use Illuminate\Support\Facades\DB;
 
 class TataCaraController extends Controller
 {
@@ -15,8 +14,14 @@ class TataCaraController extends Controller
      */
     public function index()
     {
-        $list_data = DB::table('tata_cara')->where('tata_cara_aktif',1)->get();
-        return view('front/tatacara', compact('list_data'));
+        $list_data = TataCara::where('tata_cara_aktif',1)->get();
+        return view('tatacara/front/main', compact('list_data'));
+    }
+
+    public function indexBack()
+    {
+        $list_data = TataCara::all();
+        return view('tatacara/back/main', compact('list_data'));
     }
 
     /**

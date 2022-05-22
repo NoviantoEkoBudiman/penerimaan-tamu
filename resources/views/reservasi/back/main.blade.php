@@ -32,7 +32,7 @@
                                         @endif
                                     </td>
                                     <td>
-                                        <a class="btn btn-sm btn-warning" href="{{ route('inbox.edit',Crypt::encrypt($data->id_reservasi)) }}">Tindakan</a> |
+                                        <a class="btn btn-sm btn-warning" href="{{ route('reservasi.edit',Crypt::encrypt($data->id_reservasi)) }}">Tindakan</a> |
                                         <a class="btn btn-sm btn-danger" href="">Hapus</a>
                                     </td>
                                 </tr>

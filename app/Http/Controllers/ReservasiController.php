@@ -17,6 +17,12 @@ class ReservasiController extends Controller
         return view('reservasi/front/main');
     }
 
+    public function indexBack()
+    {
+        $datas = Reservasi::orderBy('id_reservasi','DESC')->get();
+        return view('reservasi/back/main', compact('datas'));
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -115,7 +121,9 @@ class ReservasiController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = Reservasi::where('id_reservasi',decrypt($id))->first();
+        $id = (int) decrypt($id);
+        return view('reservasi/back/tindakan',compact('data','id'));
     }
 
     /**

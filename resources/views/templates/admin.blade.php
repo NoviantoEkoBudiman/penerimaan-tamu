@@ -129,7 +129,7 @@
                     <ul id="sidebarnav">
                         <!-- User Profile-->
                         <li class="sidebar-item pt-2">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('inbox.index') }}"
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('reservasi_back') }}"
                                 aria-expanded="false">
                                 <i class="fas fa-book" aria-hidden="true"></i>
                                 <span class="hide-menu">Data Reservasi</span>
@@ -137,10 +137,10 @@
                         </li>
                         
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="fontawesome.html"
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('tatacara_back') }}"
                                 aria-expanded="false">
                                 <i class="fas fa-book" aria-hidden="true"></i>
-                                <span class="hide-menu">Reservasi Beserta Bukti</span>
+                                <span class="hide-menu">Tata Cara</span>
                             </a>
                         </li>
                     </ul>
