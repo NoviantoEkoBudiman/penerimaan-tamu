@@ -26,7 +26,7 @@
                                         @if($data->reservasi_status_id == 1)
                                             {{ "Baru" }}
                                         @elseif($data->reservasi_status_id == 2)
-                                            {{ "Ditolak" }}
+                                            {{ "Dikembalikan" }}
                                         @elseif($data->reservasi_status_id == 3)
                                             {{ "Diterima" }}
                                         @endif

@@ -37,6 +37,11 @@ https://templatemo.com/tm-540-lava-landing-page
     <!-- SweetAlert -->
     <script src="{{ asset('sweetalert/dist/sweetalert2.all.min.js') }}"></script>
 
+    <!-- jQuery -->
+    <script src="{{ asset('user_template/assets/js/jquery-2.1.0.min.js') }}"></script>
+    <link href="{{ asset('datatable/dst/css/jquery.dataTables.min.css') }}" rel="stylesheet">
+    <script src="{{ asset('datatable/dst/js/jquery.dataTables.min.js') }}"></script>
+
 </head>
 
 <body>
@@ -66,7 +71,7 @@ https://templatemo.com/tm-540-lava-landing-page
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
                             <li><a href="{{ url('/') }}" class="menu-item">Beranda</a></li>
-                            <li><a href="{{ route('tatacara.index') }}" class="menu-item">Reservasi</a></li>
+                            <li><a href="{{ url('menu') }}" class="menu-item">Reservasi</a></li>
                             <li><a href="{{ route('jadwal.index') }}" class="menu-item">Jadwal Penerimaan</a></li>
                             <li><a href="{{ route('gallery.index') }}" class="menu-item">Galeri</a></li>
                             <li><a href="{{ url('peta') }}" class="menu-item">Peta Balai Kota</a></li>
@@ -355,8 +360,6 @@ https://templatemo.com/tm-540-lava-landing-page
 
     <!-- SweetAlert -->
 
-    <!-- jQuery -->
-    <script src="{{ asset('user_template/assets/js/jquery-2.1.0.min.js') }}"></script>
 
     <!-- Bootstrap -->
     <script src="{{ asset('user_template/assets/js/popper.js') }}"></script>

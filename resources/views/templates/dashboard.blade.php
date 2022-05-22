@@ -65,7 +65,7 @@ https://templatemo.com/tm-540-lava-landing-page
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
                             <li><a href="{{ url('/') }}" class="menu-item">Beranda</a></li>
-                            <li><a href="{{ route('tatacara.index') }}" class="menu-item">Reservasi</a></li>
+                            <li><a href="{{ url('menu') }}" class="menu-item">Reservasi</a></li>
                             <li><a href="{{ route('jadwal.index') }}" class="menu-item">Jadwal Penerimaan</a></li>
                             <li><a href="{{ route('gallery.index') }}" class="menu-item">Galeri</a></li>
                             <li><a href="{{ url('peta') }}" class="menu-item">Peta Balai Kota</a></li>
@@ -88,6 +88,17 @@ https://templatemo.com/tm-540-lava-landing-page
 
         <!-- ***** Header Text Start ***** -->
         <div class="header-text">
+            @if(Session::has('status'))
+                <script>
+                    Swal.fire({
+                        title: "Succes!",
+                        text: "Data reservasi telah dikirim!",
+                        icon: "success",
+                        confirmButtonText: "Tutup"
+                    })
+                </script>
+            @endif
+            
             @yield('content')
         </div>
         <!-- ***** Header Text End ***** -->

@@ -23,6 +23,12 @@ class ReservasiController extends Controller
         return view('reservasi/back/main', compact('datas'));
     }
 
+    public function riwayat()
+    {
+        $datas = Reservasi::orderBy('id_reservasi','ASC')->get();
+        return view('reservasi/front/riwayat', compact('datas'));
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -98,6 +104,8 @@ class ReservasiController extends Controller
         $reservasi->reservasi_surat_permohonan_kunjungan    = $imageName;
 
         $reservasi->save();
+
+        $request->session()->flash('status', 'Data reservasi telah dikirim.');
 
         return redirect('/');
     }
