@@ -28,8 +28,8 @@
                         @endif
                     </td>
                     <td>
-                        <button href="" class="btn btn-sm btn-primary" {{ ($item->reservasi_status_id == 2) ? null : "disabled" }}>Perbaiki</button>
-                        <button href="" class="btn btn-sm btn-primary" {{ ($item->reservasi_status_id == 3) ? null : "disabled" }}>Lengkapi</button>
+                        <a href="{{ route('reservasi.show', $item->id_reservasi) }}" class="btn btn-sm btn-primary {{ ($item->reservasi_status_id == 2) ? null : "disabled" }}">Perbaiki</a>
+                        <a href="{{ route('reservasi.show', $item->id_reservasi) }}" class="btn btn-sm btn-primary {{ ($item->reservasi_status_id == 3) ? null : "disabled" }}">Lengkapi</a>
                     </td>
                 </tr>                
             @endforeach

@@ -104,7 +104,7 @@
                     <div class="form-group mb-4">
                         <label class="col-md-12 p-0">Tindakan</label>
                     </div>
-                    <select class="form-control" name="status">
+                    <select class="form-control" name="reservasi_status_id">
                         <option value="3">Terima</option>
                         <option value="2">Kembalikan</option>
                     </select>

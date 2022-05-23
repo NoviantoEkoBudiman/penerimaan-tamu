@@ -41,6 +41,7 @@ Route::resource('tatacara',TataCaraController::class);
 Route::resource('jadwal',JadwalPenerimaanController::class);
 Route::resource('gallery',GalleryController::class);
 
+Route::put('reservasi/update_reservasi',[ReservasiController::class,'update_reservasi'])->name('update_reservasi');
 Route::get('reservasi/riwayat',[ReservasiController::class,'riwayat'])->name('riwayat');
 Route::get('reservasi/back',[ReservasiController::class,'indexBack'])->name('reservasi_back');
 Route::resource('reservasi',ReservasiController::class);
