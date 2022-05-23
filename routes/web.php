@@ -23,7 +23,7 @@ Route::get('/', function () {
     return view('front/beranda');
 });
 
-Route::get('login/', function(){
+Route::get('pilih_login/', function(){
     return view('front/pilih_login');
 });
 
@@ -52,3 +52,6 @@ Route::middleware(['auth'])->group(function(){
     Route::get('logout',[GoogleController::class],'logout');
     Route::get('user',[UserController::class],'user');
 });
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

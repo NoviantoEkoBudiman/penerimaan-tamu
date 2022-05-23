@@ -26,9 +26,10 @@
                         <img src="{{ asset('pict/account.png') }}" height="64px" width="64px" alt="">
                         <h4>Login dengan akun</h4>
                         <p>Jika anda ingin login dengan akun penerimaan tamu, pastikan bahwa anda telah mendaftarkan akun anda.</p>
-                        <a href="#testimonials" class="main-button">
+                        {{-- <a href="#testimonials" class="main-button">
                             Login Akun
-                        </a>
+                        </a> --}}
+                        <a href="{{ route('login') }}" class="main-button">Log in</a>
                     </div>
                 </div>
             </div>
@@ -40,9 +41,10 @@
                         <img src="{{ asset('pict/register.png') }}" height="64px" width="64px" alt="">
                         <h4>Daftar</h4>
                         <p>Membuat akun sistem informasi penerimaan tamu untuk melakukan reservasi</p>
-                        <a href="#testimonials" class="main-button">
+                        {{-- <a href="#testimonials" class="main-button">
                             Buat akun
-                        </a>
+                        </a> --}}
+                        <a href="{{ route('register') }}" class="main-button">Register</a>
                     </div>
                 </div>
             </div>

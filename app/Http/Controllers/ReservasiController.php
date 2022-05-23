@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Reservasi;
+use Illuminate\Support\Facades\Auth;
 
 class ReservasiController extends Controller
 {
@@ -25,7 +26,7 @@ class ReservasiController extends Controller
 
     public function riwayat()
     {
-        $datas = Reservasi::orderBy('id_reservasi','ASC')->get();
+        $datas = Reservasi::where('reservasi_email',Auth::user()->email)->orderBy('id_reservasi','ASC')->get();
         return view('reservasi/front/riwayat', compact('datas'));
     }
 

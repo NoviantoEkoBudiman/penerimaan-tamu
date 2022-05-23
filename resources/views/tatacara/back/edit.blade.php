@@ -17,7 +17,7 @@
                     <div class="form-group mb-4">
                         <label class="col-md-12 p-0">Keterangan:</label>
                         <div class="col-md-12 border-bottom p-0">
-                            <input type="text" name="tata_cara_isi" class="form-control" value="{{ $data->tata_cara_isi }}">
+                            <input type="text" name="tata_cara_keterangan" class="form-control" value="{{ $data->tata_cara_keterangan }}">
                         </div>
                     </div>
                     <br/>

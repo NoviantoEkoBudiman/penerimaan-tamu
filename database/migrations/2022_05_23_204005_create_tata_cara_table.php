@@ -15,8 +15,9 @@ return new class extends Migration
     {
         Schema::create('tata_cara', function (Blueprint $table) {
             $table->increments('id_tata_cara');
-            $table->text('tata_cara_isi');
-            $table->boolean('tata_cara_aktif');
+            $table->text('tata_cara_keterangan');
+            $table->enum('tata_cara_aktif',['Aktif','Non Aktif']);
+            $table->enum('tata_cara_upload',['Wajib','Tidak Wajib']);
             $table->timestamps();
         });
     }

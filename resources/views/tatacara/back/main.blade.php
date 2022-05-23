@@ -28,7 +28,7 @@
                                         <tr>
                                             <td style="vertical-align: top;">
                                                 Keterangan<br/>
-                                                <textarea name="tata_cara_isi" id="" cols="42" rows="5"></textarea>
+                                                <textarea name="tata_cara_keterangan" id="" cols="42" rows="5"></textarea>
                                             </td>
                                         </tr>
                                     </table>
@@ -55,7 +55,7 @@
                             @foreach ($list_data as $key=>$item)
                                 <tr>
                                     <td>{{ $key+1 }}</td>
-                                    <td>{{ $item->tata_cara_isi }}</td>
+                                    <td>{{ $item->tata_cara_keterangan }}</td>
                                     <td>{{ ($item->tata_cara_aktif == 1) ? "Aktif" : "Tidak Aktif" }}</td>
                                     <td>
                                         <a href="{{ route('tatacara.show',$item->id_tata_cara) }}" class="btn btn-warning btn-sm">Edit</a>

@@ -9,7 +9,7 @@
             @foreach ($list_data as $key=>$item)
                 <tr style="text-align: left;">
                     <td>{{ $key+1 }}.</td>
-                    <td>{{ $item->tata_cara_isi }}</td>
+                    <td>{{ $item->tata_cara_keterangan }}</td>
                 </tr>
             @endforeach
         </table>
