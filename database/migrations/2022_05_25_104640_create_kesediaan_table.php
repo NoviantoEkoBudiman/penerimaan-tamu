@@ -13,11 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('tata_cara', function (Blueprint $table) {
-            $table->increments('id_tata_cara');
-            $table->text('tata_cara_keterangan');
-            $table->enum('tata_cara_aktif',['Aktif','Non Aktif']);
-            $table->enum('tata_cara_upload',['Wajib','Tidak Wajib']);
+        Schema::create('kesediaan', function (Blueprint $table) {
+            $table->increments('kesediaan_id');
+            $table->text('kesediaan_keterangan');
+            $table->enum('kesediaan_syarat_upload',['1','0']);
+            $table->enum('kesediaan_aktif',['1','0']);
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tata_cara');
+        Schema::dropIfExists('kesediaan');
     }
 };

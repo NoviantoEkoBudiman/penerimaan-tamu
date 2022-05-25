@@ -1,0 +1,105 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\Models\Kesediaan;
+
+class KesediaanController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        $list_data = kesediaan::all();
+        return view('kesediaan/back/main',compact('list_data'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        $validate = $request->validate([
+            'kesediaan_keterangan' => 'required',
+        ],[
+            'kesediaan_keterangan.required' => 'Data keterangan tidak boleh kosong',
+        ]);
+        
+        $kesediaan = new Kesediaan;
+        $kesediaan->kesediaan_keterangan = $request->kesediaan_keterangan;
+        $kesediaan->kesediaan_syarat_upload = $request->kesediaan_syarat_upload;
+        $kesediaan->kesediaan_aktif = 1;
+        $kesediaan->save();
+        return redirect(route('kesediaan.index'));
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        $data = Kesediaan::find($id)->first();
+        return view('kesediaan/back/edit',compact('data'));
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        $data = Kesediaan::find($id);
+        $data->kesediaan_keterangan = $request->kesediaan_keterangan;
+        $data->kesediaan_syarat_upload = $request->kesediaan_syarat_upload;
+        $data->kesediaan_aktif = $request->kesediaan_aktif;
+        $data->save();
+        return redirect(route('kesediaan.index'));
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        $data = Kesediaan::find($id)->first();
+        $data->delete();
+        return redirect(route('kesediaan.index'));
+    }
+}

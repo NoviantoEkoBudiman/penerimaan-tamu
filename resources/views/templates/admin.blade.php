@@ -90,23 +90,17 @@
                     <ul class="navbar-nav ms-auto d-flex align-items-center">
 
                         <!-- ============================================================== -->
-                        <!-- Search -->
-                        <!-- ============================================================== -->
-                        <li class=" in">
-                            <form role="search" class="app-search d-none d-md-block me-3">
-                                <input type="text" placeholder="Search..." class="form-control mt-0">
-                                <a href="" class="active">
-                                    <i class="fa fa-search"></i>
-                                </a>
-                            </form>
-                        </li>
-                        <!-- ============================================================== -->
                         <!-- User profile and search -->
                         <!-- ============================================================== -->
                         <li>
                             <a class="profile-pic" href="#">
                                 <img src="{{ asset('admin_template/plugins/images/users/varun.jpg') }}" alt="user-img" width="36"
-                                    class="img-circle"><span class="text-white font-medium">Steave</span></a>
+                                    class="img-circle"><span class="text-white font-medium">
+                                        @if (Auth::user())
+                                            {{ Auth::user()->name }}
+                                        @endif
+                   
+                                    </span></a>
                         </li>
                         <!-- ============================================================== -->
                         <!-- User profile and search -->
@@ -141,6 +135,14 @@
                                 aria-expanded="false">
                                 <i class="fas fa-book" aria-hidden="true"></i>
                                 <span class="hide-menu">Tata Cara</span>
+                            </a>
+                        </li>
+
+                        <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('kesediaan.index') }}"
+                                aria-expanded="false">
+                                <i class="fas fa-book" aria-hidden="true"></i>
+                                <span class="hide-menu">Data Kesediaan</span>
                             </a>
                         </li>
                     </ul>

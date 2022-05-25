@@ -69,14 +69,35 @@ https://templatemo.com/tm-540-lava-landing-page
                         </a>
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
-                        <ul class="nav">
-                            <li><a href="{{ url('/') }}" class="menu-item">Beranda</a></li>
-                            <li><a href="{{ url('menu') }}" class="menu-item">Reservasi</a></li>
-                            <li><a href="{{ route('jadwal.index') }}" class="menu-item">Jadwal Penerimaan</a></li>
-                            <li><a href="{{ route('gallery.index') }}" class="menu-item">Galeri</a></li>
-                            <li><a href="{{ url('peta') }}" class="menu-item">Peta Balai Kota</a></li>
-                            <li><a href="{{ url('login') }}" class="menu-item">Login</a></li>
-                        </ul>
+                        
+                        @guest
+                            <ul class="nav">
+                                <li><a href="{{ url('/') }}" class="menu-item">Beranda</a></li>
+                                <li><a href="{{ url('menu') }}" class="menu-item">Reservasi</a></li>
+                                <li><a href="{{ route('jadwal.index') }}" class="menu-item">Jadwal Penerimaan</a></li>
+                                <li><a href="{{ route('gallery.index') }}" class="menu-item">Galeri</a></li>
+                                <li><a href="{{ url('peta') }}" class="menu-item">Peta Balai Kota</a></li>
+                                <li><a href="{{ url('pilih_login') }}" class="menu-item">Login</a></li>
+                            </ul>
+                        @else
+                            <ul class="nav">
+                                <li><a href="{{ url('/') }}" class="menu-item">Beranda</a></li>
+                                <li><a href="{{ url('menu') }}" class="menu-item">Reservasi</a></li>
+                                <li><a href="{{ route('jadwal.index') }}" class="menu-item">Jadwal Penerimaan</a></li>
+                                <li><a href="{{ route('gallery.index') }}" class="menu-item">Galeri</a></li>
+                                <li><a href="{{ url('peta') }}" class="menu-item">Peta Balai Kota</a></li>
+                                <li>
+                                    <a href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                                </li>
+                            </ul>
+                        @endguest
                         <a class='menu-trigger'>
                             <span>Menu</span>
                         </a>

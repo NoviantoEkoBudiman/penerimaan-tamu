@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('reservasi', function (Blueprint $table) {
-            $table->increments('id_reservasi');
+            $table->increments('reservasi_id');
 
             // Data Reservasi
             $table->tinyInteger('reservasi_status_id')->length(1);

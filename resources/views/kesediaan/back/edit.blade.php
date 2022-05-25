@@ -7,7 +7,7 @@
     <div class="col-lg-12 col-xlg-12 col-md-12">
         <div class="card">
             <div class="card-body">
-                <form class="form-horizontal form-material" action="{{ route('tatacara.update',$data->tata_cara_id)}}" method="POST">
+                <form class="form-horizontal form-material" action="{{ route('kesediaan.update',$data->kesediaan_id)}}" method="POST">
                     @csrf
                     @method('PUT')
                     <hr>
@@ -17,15 +17,22 @@
                     <div class="form-group mb-4">
                         <label class="col-md-12 p-0">Keterangan:</label>
                         <div class="col-md-12 border-bottom p-0">
-                            <input type="text" name="tata_cara_keterangan" class="form-control" value="{{ $data->tata_cara_keterangan }}">
+                            <input type="text" name="kesediaan_keterangan" class="form-control" value="{{ $data->kesediaan_keterangan }}">
                         </div>
                     </div>
                     <br/>
-                        <div class="form-group mb-4">
+                    <div class="form-group mb-4">
+                        <label class="col-md-12 p-0">Syarat Upload:</label>
+                        <select name="kesediaan_syarat_upload" class="form-control">
+                            <option value="1" {{ ($data->kesediaan_aktif == 1) ? "selected" : null }}>Wajib</option>
+                            <option value="0" {{ ($data->kesediaan_aktif == 0) ? "selected" : null }}>Tidak Wajib</option>
+                        </select>
+                    </div>
+                    <div class="form-group mb-4">
                         <label class="col-md-12 p-0">Status:</label>
-                        <select name="tata_cara_aktif" class="form-control">
-                            <option value="1" {{ ($data->tata_cara_aktif == 1) ? "selected" : null }}>Aktif</option>
-                            <option value="0" {{ ($data->tata_cara_aktif == 0) ? "selected" : null }}>Tidak Aktif</option>
+                        <select name="kesediaan_aktif" class="form-control">
+                            <option value="1" {{ ($data->kesediaan_aktif == 1) ? "selected" : null }}>Aktif</option>
+                            <option value="0" {{ ($data->kesediaan_aktif == 0) ? "selected" : null }}>Tidak Aktif</option>
                         </select>
                     </div>
                     <div class="form-group mb-4">

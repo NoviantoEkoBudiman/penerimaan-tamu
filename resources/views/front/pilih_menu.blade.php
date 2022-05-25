@@ -43,7 +43,7 @@
                             <br/>
                             Silahkan login terlebih dahulu
                             <br/>
-                            <a href="{{ route('login') }}" class="main-button">
+                            <a href="{{ url('pilih_login') }}" class="main-button">
                                 Login
                             </a>
                         </div>
