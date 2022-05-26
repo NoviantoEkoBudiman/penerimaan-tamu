@@ -18,11 +18,11 @@ class GoogleController extends Controller
     public function callback()
     {
         try{
-            $account = Socialite::driver('github')->user();
+            $account = Socialite::driver('google')->user();
             $user = User::where('email',$account->email)->first();
             if($user){
                 Auth::login($user);
-                return redirect('user');
+                return redirect('/');
             }else{
                 $new_user = User::create([
                     'name' => $account->name,
@@ -32,7 +32,7 @@ class GoogleController extends Controller
                     'remember_token' => Str::random(10),
                 ]);
                 Auth::login($new_user);
-                return redirect('user');
+                return redirect('/');
             }
         }catch(\Throwable $th){
             abort(404);

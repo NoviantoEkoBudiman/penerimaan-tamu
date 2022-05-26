@@ -17,4 +17,12 @@ class Kesediaan extends Model
         'kesediaan_keterangan',
         'kesediaan_syarat_upload'
     ];
+
+    
+    public function comments()
+    {
+
+        return $this->hasMany(Comment::class);
+
+    }
 }

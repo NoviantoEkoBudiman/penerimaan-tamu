@@ -17,7 +17,7 @@ return new class extends Migration
             $table->increments('tercentang_id');
             $table->foreignId('reservasi_id');
             $table->foreignId('kesediaan_id');
-            $table->string('file_upload')->length('100');
+            $table->string('file_upload')->length('100')->nullable();
             $table->timestamps();
         });
     }

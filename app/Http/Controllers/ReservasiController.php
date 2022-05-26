@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Reservasi;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Kesediaan;
+use App\Models\KesediaanTercentang;
+use Illuminate\Support\Facades\DB;
 
 class ReservasiController extends Controller
 {
@@ -15,7 +18,8 @@ class ReservasiController extends Controller
      */
     public function index()
     {
-        return view('reservasi/front/main');
+        $kesediaan = Kesediaan::all();
+        return view('reservasi/front/main',compact('kesediaan'));
     }
 
     public function indexBack()
@@ -108,6 +112,16 @@ class ReservasiController extends Controller
 
         $request->session()->flash('status', 'Data reservasi telah dikirim.');
 
+        $reservasiId = DB::getPdo()->lastInsertId();
+        $totalKesediaan = Kesediaan::where('kesediaan_aktif',1)->get();
+        
+        foreach($request->kesediaan as $key=>$val){
+            $kesediaan_tercentang = new KesediaanTercentang;
+            $kesediaan_tercentang->reservasi_id = $reservasiId;
+            $kesediaan_tercentang->kesediaan_id = $val;
+            $kesediaan_tercentang->save();
+        }
+
         return redirect('/');
     }
 
@@ -145,44 +159,78 @@ class ReservasiController extends Controller
      */
     public function update(Request $request, $id)
     {
-        if ($request->hasFile('reservasi_surat_permohonan_kunjungan')) {
-            $imageName = time().'.'.$request->reservasi_surat_permohonan_kunjungan->getClientOriginalExtension();
-            $request->reservasi_surat_permohonan_kunjungan->move(public_path('/reservasi_surat_permohonan_kunjungan'), $imageName);
+        $reservasi                      = Reservasi::find($id)->first();
+        $reservasi->reservasi_status_id = $request->reservasi_status_id;
+        $reservasi->save();
+        return redirect(route('reservasi_back'));
+    }
+
+    // public function update(Request $request, $id)
+    // {
+    //     dd($request);
+    //     if ($request->hasFile('reservasi_surat_permohonan_kunjungan')) {
+    //         $imageName = time().'.'.$request->reservasi_surat_permohonan_kunjungan->getClientOriginalExtension();
+    //         $request->reservasi_surat_permohonan_kunjungan->move(public_path('/reservasi_surat_permohonan_kunjungan'), $imageName);
+    //     }else{
+    //         $imageName = "";
+    //     }
+
+    //     $reservasi = Reservasi::find($id)->first();
+
+    //     // Data Reservasi
+    //     $reservasi->reservasi_status_id                     = 4;
+    //     $reservasi->reservasi_email                         = $request->reservasi_email;
+    //     $reservasi->reservasi_is_read                       = 0;
+    //     $reservasi->reservasi_is_kirim_bukti                = 0;
+
+    //     //Data Pemohon
+    //     $reservasi->reservasi_nama                          = $request->reservasi_nama;
+    //     $reservasi->reservasi_nama_instansi                 = $request->reservasi_nama_instansi;
+    //     $reservasi->reservasi_kontak                        = $request->reservasi_kontak;
+    //     $reservasi->reservasi_provinsi                      = $request->reservasi_provinsi;
+    //     $reservasi->reservasi_alamat                        = $request->reservasi_alamat;
+
+    //     // Data tujuan reservasi
+    //     $reservasi->reservasi_jadwal_berkunjung             = $request->reservasi_jadwal_berkunjung;
+    //     $reservasi->reservasi_topik                         = $request->reservasi_topik;
+    //     $reservasi->reservasi_tujuan                        = $request->reservasi_tujuan;
+    //     $reservasi->reservasi_jumlah_peserta                = $request->reservasi_jumlah_peserta;
+    //     $reservasi->reservasi_keterangan                    = $request->reservasi_keterangan;
+    //     $reservasi->reservasi_no_surat                      = $request->reservasi_no_surat;
+    //     $reservasi->reservasi_kepada                        = $request->reservasi_kepada;
+    //     $reservasi->reservasi_surat_permohonan_kunjungan    = $imageName;
+    //     $reservasi->save();
+    //     return redirect(route('riwayat'));
+    // }
+    
+    public function lengkapi($id)
+    {
+        $data = KesediaanTercentang::with('kesediaan')->get();
+        return view('reservasi/front/lengkapi',compact('data'));
+    }
+
+    public function upload_bukti(Request $request, $id)
+    {
+        if ($request->hasFile('upload_bukti')) {
+            $imageName = time().'.'.$request->upload_bukti->getClientOriginalExtension();
+            $request->upload_bukti->move(public_path('/upload_bukti'), $imageName);
         }else{
             $imageName = "";
         }
 
-        $reservasi = Reservasi::find($id)->first();
-
-        // Data Reservasi
-        $reservasi->reservasi_status_id                     = 4;
-        $reservasi->reservasi_email                         = $request->reservasi_email;
-        $reservasi->reservasi_is_read                       = 0;
-        $reservasi->reservasi_is_kirim_bukti                = 0;
-
-        //Data Pemohon
-        $reservasi->reservasi_nama                          = $request->reservasi_nama;
-        $reservasi->reservasi_nama_instansi                 = $request->reservasi_nama_instansi;
-        $reservasi->reservasi_kontak                        = $request->reservasi_kontak;
-        $reservasi->reservasi_provinsi                      = $request->reservasi_provinsi;
-        $reservasi->reservasi_alamat                        = $request->reservasi_alamat;
-
-        // Data tujuan reservasi
-        $reservasi->reservasi_jadwal_berkunjung             = $request->reservasi_jadwal_berkunjung;
-        $reservasi->reservasi_topik                         = $request->reservasi_topik;
-        $reservasi->reservasi_tujuan                        = $request->reservasi_tujuan;
-        $reservasi->reservasi_jumlah_peserta                = $request->reservasi_jumlah_peserta;
-        $reservasi->reservasi_keterangan                    = $request->reservasi_keterangan;
-        $reservasi->reservasi_no_surat                      = $request->reservasi_no_surat;
-        $reservasi->reservasi_kepada                        = $request->reservasi_kepada;
-        $reservasi->reservasi_surat_permohonan_kunjungan    = $imageName;
-        $reservasi->save();
-        return redirect(route('riwayat'));
+        $KesediaanTercentang = KesediaanTercentang::where('tercentang_id',$id)->first();
+        $KesediaanTercentang->file_upload = $imageName;
+        
+        $KesediaanTercentang->save();
+        return redirect(route('lengkapi',$request->segment));
     }
-    
-    public function lengkapi($id)
+
+    public function kirim_bukti($id)
     {
-        return view('reservasi/front/lengkapi');
+        $data = Reservasi::where('reservasi_id',$id)->first();
+        $data->reservasi_status_id = 4;
+        $data->save();
+        return redirect(route('riwayat'));
     }
 
     /**

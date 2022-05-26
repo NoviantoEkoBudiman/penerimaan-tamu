@@ -12,7 +12,7 @@
                         <img src="{{ asset('pict/google.png') }}" height="64px" width="64px" alt="">
                         <h4>Login dengan Google</h4>
                         <p>Jika anda ingin login dengan Google, pastikan bahwa anda telah memiliki akun Google.</p>
-                        <a href="#testimonials" class="main-button">
+                        <a href="{{url('login/google')}}" class="main-button">
                             Login Google
                         </a>
                     </div>

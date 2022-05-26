@@ -64,8 +64,8 @@ https://templatemo.com/tm-540-lava-landing-page
                 <div class="col-12">
                     <nav class="main-nav">
                         <!-- ***** Logo Start ***** -->
-                        <a href="index.html" class="logo">
-                            Lava
+                        <a href="{{ url('/') }}" class="logo">
+                            <img src="{{ asset('pict/logo-penerimaan-tamu.svg')}}" height="100px" width="150px" alt="">
                         </a>
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->

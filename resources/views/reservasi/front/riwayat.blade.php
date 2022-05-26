@@ -25,6 +25,8 @@
                             {{ "Dikembalikan" }}
                         @elseif($item->reservasi_status_id == 3)
                             {{ "Diterima" }}
+                        @elseif($item->reservasi_status_id == 4)
+                            {{ "Bukti Dikirim" }}
                         @endif
                     </td>
                     <td>

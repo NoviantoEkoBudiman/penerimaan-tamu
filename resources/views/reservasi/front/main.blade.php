@@ -222,7 +222,7 @@
                                     <td data-scroll-reveal="enter right move 30px over 0.6s after 0.6s">
                                         <div class="text">
                                             <h4>Surat Permohonan Kunjungan :</h4>
-                                            <input type="file" name="reservasi_surat_permohonan_kunjungan" accept="image/*" class="form-control @error('reservasi_surat_permohonan_kunjungan') is-invalid @enderror">
+                                            <input type="file" name="reservasi_surat_permohonan_kunjungan" accept="image/png, image/jpg, image/jpeg" class="form-control @error('reservasi_surat_permohonan_kunjungan') is-invalid @enderror">
                                             @error('reservasi_surat_permohonan_kunjungan')
                                                 <div class="alert alert-danger" role="alert">
                                                     {{ $message }}
@@ -231,6 +231,25 @@
                                         </div>
                                     </td>
                                 </tr>
+                                <tr>
+                                    <td>
+                                        <div class="alert alert-primary text-left" role="alert">
+                                            Data Kesediaan<br/>
+                                            <small>Dengan mencentang semua data ini, maka anda telah setuju untuk memenuhi persyaratan-persyaratan untuk melakukan reservasi</small>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                            <table class="table-borderless text-left">
+                                @foreach ($kesediaan as $key=>$item)
+                                    <tr>
+                                        <td><input class="form-check-input" type="checkbox" name="kesediaan[]" value="{{$item->kesediaan_id}}" required></td>
+                                        <td>{{$item->kesediaan_keterangan}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>&nbsp;</td>
+                                    </tr>
+                                @endforeach
                             </table>
                             <br/>
                             <button type="submit" class="btn btn-md btn-primary" style="float: left">Kirim</button>
