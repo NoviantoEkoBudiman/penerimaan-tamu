@@ -20,15 +20,18 @@
                     <td>{{ $item->reservasi_nama_instansi }}</td>
                     <td>
                         @if($item->reservasi_status_id == 1)
-                            {{ "Belum dilakukan tindakan" }}
+                            {{ "Baru" }}
                         @elseif($item->reservasi_status_id == 2)
                             {{ "Dikembalikan" }}
                         @elseif($item->reservasi_status_id == 3)
                             {{ "Diterima" }}
                         @elseif($item->reservasi_status_id == 4)
                             {{ "Bukti Dikirim" }}
+                        @elseif($item->reservasi_status_id == 5)
+                            {{ "Disetujui" }}
+                        @elseif($item->reservasi_status_id == 6)
+                            {{ "Ditolak" }}
                         @endif
-                    </td>
                     <td>
                         <a href="{{ route('reservasi.show', $item->reservasi_id) }}" class="btn btn-sm btn-primary {{ ($item->reservasi_status_id == 2) ? null : "disabled" }}">Perbaiki</a>
                         <a href="{{ route('lengkapi', $item->reservasi_id) }}" class="btn btn-sm btn-primary {{ ($item->reservasi_status_id == 3) ? null : "disabled" }}">Lengkapi</a>

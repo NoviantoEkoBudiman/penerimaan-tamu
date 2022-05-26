@@ -43,6 +43,8 @@ Route::resource('tatacara',TataCaraController::class);
 Route::resource('jadwal',JadwalPenerimaanController::class);
 Route::resource('gallery',GalleryController::class);
 
+Route::put('update_tindakan_akhir/{id?}', [ReservasiController::class,'update_tindakan_akhir'])->name('update_tindakan_akhir');
+Route::get('tindakan_akhir/{id?}', [ReservasiController::class,'tindakan_akhir'])->name('tindakan_akhir');
 Route::put('kirim_bukti/{id?}', [ReservasiController::class,'kirim_bukti'])->name('kirim_bukti');
 Route::put('upload_bukti/{id?}', [ReservasiController::class,'upload_bukti'])->name('upload_bukti');
 Route::get('lengkapi/{id?}', [ReservasiController::class,'lengkapi'])->name('lengkapi');

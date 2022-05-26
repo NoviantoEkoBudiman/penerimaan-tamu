@@ -233,6 +233,21 @@ class ReservasiController extends Controller
         return redirect(route('riwayat'));
     }
 
+    public function tindakan_akhir($id)
+    {
+        $data = Reservasi::find(decrypt($id))->first();
+        $KesediaanTercentang = KesediaanTercentang::with('kesediaan')->where('reservasi_id',decrypt($id))->get();
+        return view('reservasi/back/tindakan_akhir',compact('data','KesediaanTercentang'));
+    }
+
+    public function update_tindakan_akhir(Request $request, $id)
+    {
+        $data = Reservasi::where('reservasi_id',decrypt($id))->first();
+        $data->reservasi_status_id = $request->reservasi_status_id;
+        $data->save();
+        return redirect(route('reservasi_back'));
+    }
+
     /**
      * Remove the specified resource from storage.
      *
