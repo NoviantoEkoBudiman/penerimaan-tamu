@@ -7,7 +7,7 @@
     <div class="col-lg-12 col-xlg-12 col-md-12">
         <div class="card">
             <div class="card-body">
-                <form class="form-horizontal form-material" action="{{ route('kesediaan.update',$data->kesediaan_id)}}" method="POST">
+                <form class="form-horizontal form-material" action="{{ route('kesediaan.update',Crypt::encrypt($data->kesediaan_id))}}" method="POST">
                     @csrf
                     @method('PUT')
                     <hr>

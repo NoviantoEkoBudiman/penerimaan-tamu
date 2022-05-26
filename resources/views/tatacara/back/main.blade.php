@@ -58,8 +58,8 @@
                                     <td>{{ $item->tata_cara_keterangan }}</td>
                                     <td>{{ ($item->tata_cara_aktif == 1) ? "Aktif" : "Tidak Aktif" }}</td>
                                     <td>
-                                        <a href="{{ route('tatacara.show',$item->tata_cara_id) }}" class="btn btn-warning btn-sm">Edit</a>
-                                        <form action="{{ route('tatacara.destroy',$item->tata_cara_id) }}" method="POST">
+                                        <a href="{{ route('tatacara.show',Crypt::encrypt($item->tata_cara_id)) }}" class="btn btn-warning btn-sm">Edit</a>
+                                        <form action="{{ route('tatacara.destroy',Crypt::encrypt($item->tata_cara_id)) }}" method="POST">
                                             @method('DELETE')
                                             @csrf
                                             <button class="btn btn-danger btn-sm" type="submit">Hapus</button>

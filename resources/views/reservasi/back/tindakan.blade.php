@@ -97,7 +97,9 @@
                     <div class="form-group mb-4">
                         <label class="col-md-12 p-0">Surat Permohonan Kunjungan :</label>
                         <div class="col-md-12 border-bottom p-0">
-                            <img src="{{ asset('reservasi_surat_permohonan_kunjungan/'.$data->reservasi_surat_permohonan_kunjungan) }}" width="240" height="320">
+                            <a target="_blank" href="{{ asset('reservasi_surat_permohonan_kunjungan/'.$data->reservasi_surat_permohonan_kunjungan) }}" class="btn btn-primary btn-md">
+                                Lihat Surat
+                            </a>
                         </div>
                     </div>
                     <hr>

@@ -32,20 +32,22 @@
                                         @elseif($data->reservasi_status_id == 4)
                                             {{ "Bukti Dikirim" }}
                                         @elseif($data->reservasi_status_id == 5)
-                                            {{ "Disetujui" }}
+                                            {{ "Data Perbaikan Terkirim" }}
                                         @elseif($data->reservasi_status_id == 6)
+                                            {{ "Disetujui" }}
+                                        @elseif($data->reservasi_status_id == 7)
                                             {{ "Ditolak" }}
                                         @endif
                                     </td>
                                     <td>
-                                        @if($data->reservasi_status_id == 1)
+                                        @if($data->reservasi_status_id == 1 || $data->reservasi_status_id == 5)
                                             <a class="btn btn-sm btn-warning" href="{{ route('reservasi.edit',Crypt::encrypt($data->reservasi_id)) }}">Tindakan</a> |
                                         @elseif($data->reservasi_status_id == 4)
                                             <a class="btn btn-sm btn-warning" href="{{ route('tindakan_akhir',Crypt::encrypt($data->reservasi_id)) }}">Tindakan</a> |
                                         @else
                                             <a class="btn btn-sm btn-warning disabled">Tindakan</a> |
                                         @endif
-                                        <a class="btn btn-sm btn-danger" href="">Hapus</a>
+                                        <a class="btn btn-sm btn-success" href="{{ route('lihat_reservasi',Crypt::encrypt($data->reservasi_id)) }}">Lihat Data</a>
                                     </td>
                                 </tr>
                             @endforeach

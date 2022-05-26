@@ -53,16 +53,10 @@
                     <!-- Logo -->
                     <!-- ============================================================== -->
                     <a class="navbar-brand" href="dashboard.html">
-                        <!-- Logo icon -->
-                        <b class="logo-icon">
-                            <!-- Dark Logo icon -->
-                            <img src="{{ asset('admin_template/plugins/images/logo-icon.png') }}" alt="homepage" />
-                        </b>
-                        <!--End Logo icon -->
                         <!-- Logo text -->
                         <span class="logo-text">
                             <!-- dark Logo text -->
-                            <img src="{{ asset('admin_template/plugins/images/logo-text.png') }}" alt="homepage" />
+                            <img src="{{ asset('pict/logo-penerimaan-tamu.svg')}}" height="75px" width="200px" alt="">
                         </span>
                     </a>
                     <!-- ============================================================== -->

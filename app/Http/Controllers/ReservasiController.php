@@ -133,7 +133,7 @@ class ReservasiController extends Controller
      */
     public function show($id)
     {
-        $data = Reservasi::find($id)->first();
+        $data = Reservasi::find(decrypt($id))->first();
         return view('reservasi/front/perbaiki',compact('data'));
     }
 
@@ -148,6 +148,13 @@ class ReservasiController extends Controller
         $data = Reservasi::where('reservasi_id',decrypt($id))->first();
         $id = (int) decrypt($id);
         return view('reservasi/back/tindakan',compact('data','id'));
+    }
+
+    public function lihat_reservasi($id)
+    {
+        $data = Reservasi::where('reservasi_id',decrypt($id))->first();
+        $KesediaanTercentang = KesediaanTercentang::with('kesediaan')->where('reservasi_id',decrypt($id))->get();
+        return view('reservasi/back/lihat',compact('data','KesediaanTercentang'));
     }
 
     /**
@@ -165,43 +172,40 @@ class ReservasiController extends Controller
         return redirect(route('reservasi_back'));
     }
 
-    // public function update(Request $request, $id)
-    // {
-    //     dd($request);
-    //     if ($request->hasFile('reservasi_surat_permohonan_kunjungan')) {
-    //         $imageName = time().'.'.$request->reservasi_surat_permohonan_kunjungan->getClientOriginalExtension();
-    //         $request->reservasi_surat_permohonan_kunjungan->move(public_path('/reservasi_surat_permohonan_kunjungan'), $imageName);
-    //     }else{
-    //         $imageName = "";
-    //     }
+    public function perbaikan_data(Request $request, $id)
+    {
+        if ($request->hasFile('reservasi_surat_permohonan_kunjungan')) {
+            $imageName = time().'.'.$request->reservasi_surat_permohonan_kunjungan->getClientOriginalExtension();
+            $request->reservasi_surat_permohonan_kunjungan->move(public_path('/reservasi_surat_permohonan_kunjungan'), $imageName);
+        }else{
+            $imageName = "";
+        }
 
-    //     $reservasi = Reservasi::find($id)->first();
+        $reservasi = Reservasi::find(decrypt($id))->first();
 
-    //     // Data Reservasi
-    //     $reservasi->reservasi_status_id                     = 4;
-    //     $reservasi->reservasi_email                         = $request->reservasi_email;
-    //     $reservasi->reservasi_is_read                       = 0;
-    //     $reservasi->reservasi_is_kirim_bukti                = 0;
+        // Data Reservasi
+        $reservasi->reservasi_status_id                     = 5;
+        $reservasi->reservasi_email                         = $request->reservasi_email;
 
-    //     //Data Pemohon
-    //     $reservasi->reservasi_nama                          = $request->reservasi_nama;
-    //     $reservasi->reservasi_nama_instansi                 = $request->reservasi_nama_instansi;
-    //     $reservasi->reservasi_kontak                        = $request->reservasi_kontak;
-    //     $reservasi->reservasi_provinsi                      = $request->reservasi_provinsi;
-    //     $reservasi->reservasi_alamat                        = $request->reservasi_alamat;
+        //Data Pemohon
+        $reservasi->reservasi_nama                          = $request->reservasi_nama;
+        $reservasi->reservasi_nama_instansi                 = $request->reservasi_nama_instansi;
+        $reservasi->reservasi_kontak                        = $request->reservasi_kontak;
+        $reservasi->reservasi_provinsi                      = $request->reservasi_provinsi;
+        $reservasi->reservasi_alamat                        = $request->reservasi_alamat;
 
-    //     // Data tujuan reservasi
-    //     $reservasi->reservasi_jadwal_berkunjung             = $request->reservasi_jadwal_berkunjung;
-    //     $reservasi->reservasi_topik                         = $request->reservasi_topik;
-    //     $reservasi->reservasi_tujuan                        = $request->reservasi_tujuan;
-    //     $reservasi->reservasi_jumlah_peserta                = $request->reservasi_jumlah_peserta;
-    //     $reservasi->reservasi_keterangan                    = $request->reservasi_keterangan;
-    //     $reservasi->reservasi_no_surat                      = $request->reservasi_no_surat;
-    //     $reservasi->reservasi_kepada                        = $request->reservasi_kepada;
-    //     $reservasi->reservasi_surat_permohonan_kunjungan    = $imageName;
-    //     $reservasi->save();
-    //     return redirect(route('riwayat'));
-    // }
+        // Data tujuan reservasi
+        $reservasi->reservasi_jadwal_berkunjung             = $request->reservasi_jadwal_berkunjung;
+        $reservasi->reservasi_topik                         = $request->reservasi_topik;
+        $reservasi->reservasi_tujuan                        = $request->reservasi_tujuan;
+        $reservasi->reservasi_jumlah_peserta                = $request->reservasi_jumlah_peserta;
+        $reservasi->reservasi_keterangan                    = $request->reservasi_keterangan;
+        $reservasi->reservasi_no_surat                      = $request->reservasi_no_surat;
+        $reservasi->reservasi_kepada                        = $request->reservasi_kepada;
+        $reservasi->reservasi_surat_permohonan_kunjungan    = $imageName;
+        $reservasi->save();
+        return redirect(route('riwayat'));
+    }
     
     public function lengkapi($id)
     {
@@ -227,7 +231,7 @@ class ReservasiController extends Controller
 
     public function kirim_bukti($id)
     {
-        $data = Reservasi::where('reservasi_id',$id)->first();
+        $data = Reservasi::where('reservasi_id',decrypt($id))->first();
         $data->reservasi_status_id = 4;
         $data->save();
         return redirect(route('riwayat'));
@@ -246,16 +250,5 @@ class ReservasiController extends Controller
         $data->reservasi_status_id = $request->reservasi_status_id;
         $data->save();
         return redirect(route('reservasi_back'));
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 }

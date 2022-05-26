@@ -19,16 +19,6 @@ class KesediaanController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -58,19 +48,8 @@ class KesediaanController extends Controller
      */
     public function show($id)
     {
-        $data = Kesediaan::find($id)->first();
+        $data = Kesediaan::where('kesediaan_id',decrypt($id))->first();
         return view('kesediaan/back/edit',compact('data'));
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
     }
 
     /**
@@ -82,7 +61,7 @@ class KesediaanController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data = Kesediaan::find($id);
+        $data = Kesediaan::find(decrypt($id));
         $data->kesediaan_keterangan = $request->kesediaan_keterangan;
         $data->kesediaan_syarat_upload = $request->kesediaan_syarat_upload;
         $data->kesediaan_aktif = $request->kesediaan_aktif;
@@ -98,7 +77,7 @@ class KesediaanController extends Controller
      */
     public function destroy($id)
     {
-        $data = Kesediaan::find($id)->first();
+        $data = Kesediaan::find(decrypt($id))->first();
         $data->delete();
         return redirect(route('kesediaan.index'));
     }

@@ -14,7 +14,7 @@
                         <img src="{{ asset('user_template/assets/images/left-image.png') }}" class="rounded img-fluid d-block mx-auto" alt="App">
                     </div>
                     <div class="right-text offset-lg-1 col-lg-6 col-md-12 col-sm-12 mobile-bottom-fix">
-                        <form method="POST" action=" {{ route('reservasi.update',$data->reservasi_id) }}" enctype="multipart/form-data">
+                        <form method="POST" action=" {{ route('perbaikan_data',Crypt::encrypt($data->reservasi_id)) }}" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
                             <table class="table-borderless text-left">
@@ -65,7 +65,7 @@
                                     <td data-scroll-reveal="enter right move 30px over 0.6s after 0.5s">
                                         <div class="text">
                                             <h4>Email Instansi Pemohon:</h4>
-                                            <input type="email" name="reservasi_email" class="form-control @error('reservasi_email') is-invalid @enderror" value="{{ $data->reservasi_email }}" disabled>
+                                            <input type="email" name="reservasi_email" class="form-control @error('reservasi_email') is-invalid @enderror" value="{{ $data->reservasi_email }}" readonly>
                                             @error('reservasi_email')
                                                 <div class="alert alert-danger" role="alert">
                                                     {{ $message }}

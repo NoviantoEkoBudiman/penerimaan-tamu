@@ -118,8 +118,8 @@
                         <label class="col-md-12 p-0">Tindakan</label>
                     </div>
                     <select class="form-control" name="reservasi_status_id">
-                        <option value="5">Disetujui</option>
-                        <option value="6">Ditolak</option>
+                        <option value="6">Disetujui</option>
+                        <option value="7">Ditolak</option>
                     </select>
                     <br/>
                     <div class="form-group mb-4">

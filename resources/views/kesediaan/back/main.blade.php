@@ -70,8 +70,8 @@
                                     <td>{{ ($item->kesediaan_aktif == 1) ? "Aktif" : "Tidak Aktif" }}</td>
                                     <td>
                                         <div class="input-group">
-                                            <a href="{{ route('kesediaan.show',$item->kesediaan_id) }}" class="btn btn-warning btn-sm">Edit</a>
-                                            <form action="{{ route('kesediaan.destroy',$item->kesediaan_id) }}" method="POST">
+                                            <a href="{{ route('kesediaan.show',Crypt::encrypt($item->kesediaan_id)) }}" class="btn btn-warning btn-sm">Edit</a>
+                                            <form action="{{ route('kesediaan.destroy',Crypt::encrypt($item->kesediaan_id)) }}" method="POST">
                                                 @method('DELETE')
                                                 @csrf
                                                 <button class="btn btn-danger btn-sm" type="submit">Hapus</button>

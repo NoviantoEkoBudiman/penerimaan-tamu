@@ -25,16 +25,6 @@ class TataCaraController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        // 
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -62,19 +52,8 @@ class TataCaraController extends Controller
      */
     public function show($id)
     {
-        $data = TataCara::find($id)->first();
+        $data = TataCara::where('tata_cara_id',decrypt($id))->first();
         return view('tatacara/back/edit',compact('data'));
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
     }
 
     /**
@@ -86,7 +65,7 @@ class TataCaraController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data = TataCara::find($id);
+        $data = TataCara::find(decrypt($id));
         $data->tata_cara_keterangan = $request->tata_cara_keterangan;
         $data->tata_cara_aktif = $request->tata_cara_aktif;
         $data->save();
@@ -101,7 +80,7 @@ class TataCaraController extends Controller
      */
     public function destroy($id)
     {
-        $data = TataCara::find($id);
+        $data = TataCara::find(decrypt($id));
         $data->delete();
         return redirect(route('tatacara_back'));
     }
