@@ -23,35 +23,54 @@ Route::get('/', function () {
     return view('front/beranda');
 });
 
-Route::get('pilih_login/', function(){
-    return view('front/pilih_login');
-});
 
 
-Route::get('peta', function(){
-    return view('peta/main');
-});
-
-Route::get('menu', function(){
-    return view('front/pilih_menu');
-});
-
-Route::get('hapus_tata_cara/{id?}', [TataCaraController::class,'destroy']);
-Route::get('tatacara/index_back',[TataCaraController::class,'indexBack'])->name('tatacara_back');
-Route::resource('tatacara',TataCaraController::class);
 Route::resource('jadwal',JadwalPenerimaanController::class);
 
-Route::get('lihat_reservasi/{id?}', [ReservasiController::class,'lihat_reservasi'])->name('lihat_reservasi');
-Route::put('perbaikan_data/{id?}', [ReservasiController::class,'perbaikan_data'])->name('perbaikan_data');
-Route::put('update_tindakan_akhir/{id?}', [ReservasiController::class,'update_tindakan_akhir'])->name('update_tindakan_akhir');
-Route::get('tindakan_akhir/{id?}', [ReservasiController::class,'tindakan_akhir'])->name('tindakan_akhir');
-Route::put('kirim_bukti/{id?}', [ReservasiController::class,'kirim_bukti'])->name('kirim_bukti');
-Route::put('upload_bukti/{id?}', [ReservasiController::class,'upload_bukti'])->name('upload_bukti');
-Route::get('lengkapi/{id?}', [ReservasiController::class,'lengkapi'])->name('lengkapi');
-Route::put('reservasi/update_reservasi',[ReservasiController::class,'update_reservasi'])->name('update_reservasi');
-Route::get('reservasi/riwayat',[ReservasiController::class,'riwayat'])->name('riwayat');
-Route::get('reservasi/back',[ReservasiController::class,'indexBack'])->name('reservasi_back');
-Route::resource('reservasi',ReservasiController::class);
+Route::middleware(['auth','is_user'])->group(function(){
+
+    Route::get('pilih_login/', function(){
+        return view('front/pilih_login');
+    });
+
+    Route::get('peta', function(){
+        return view('peta/main');
+    });
+
+    Route::get('menu', function(){
+        return view('front/pilih_menu');
+    });
+
+    Route::controller(Reservasi::class)->group(function(){
+        Route::get('lihat_reservasi/{id?}', [ReservasiController::class,'lihat_reservasi'])->name('lihat_reservasi');
+        Route::put('perbaikan_data/{id?}', [ReservasiController::class,'perbaikan_data'])->name('perbaikan_data');
+        Route::put('kirim_bukti/{id?}', [ReservasiController::class,'kirim_bukti'])->name('kirim_bukti');
+        Route::put('upload_bukti/{id?}', [ReservasiController::class,'upload_bukti'])->name('upload_bukti');
+        Route::get('lengkapi/{id?}', [ReservasiController::class,'lengkapi'])->name('lengkapi');
+        Route::put('reservasi/update_reservasi',[ReservasiController::class,'update_reservasi'])->name('update_reservasi');
+        Route::get('reservasi/riwayat',[ReservasiController::class,'riwayat'])->name('riwayat');
+    });
+
+});
+
+
+Route::middleware(['auth','is_admin'])->group(function(){
+
+    Route::controller(TataCara::class)->group(function(){
+        Route::get('hapus_tata_cara/{id?}', [TataCaraController::class,'destroy']);
+        Route::get('tatacara/index_back',[TataCaraController::class,'indexBack'])->name('tatacara_back');
+    });
+
+    Route::controller(Reservasi::class)->group(function(){
+        Route::put('update_tindakan_akhir/{id?}', [ReservasiController::class,'update_tindakan_akhir'])->name('update_tindakan_akhir');
+        Route::get('tindakan_akhir/{id?}', [ReservasiController::class,'tindakan_akhir'])->name('tindakan_akhir');
+        Route::get('reservasi/back',[ReservasiController::class,'indexBack'])->name('reservasi_back');
+    });
+
+    Route::controller(Kesediaan::class)->group(function(){
+        Route::resource('kesediaan',KesediaanController::class);
+    });
+});
 
 Route::get('login/google',[GoogleController::class,'login']);
 Route::get('login/google/callback',[GoogleController::class,'callback']);
@@ -62,7 +81,7 @@ Route::middleware(['auth'])->group(function(){
 });
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::resource('tatacara',TataCaraController::class);
+Route::resource('reservasi',ReservasiController::class);
 
-// Kesediaan
-Route::resource('kesediaan',KesediaanController::class);
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

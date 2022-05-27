@@ -38,9 +38,6 @@
                         <img src="{{ asset('pict/register.png') }}" height="64px" width="64px" alt="">
                         <h4>Register</h4>
                         <p>Membuat akun sistem informasi penerimaan tamu untuk melakukan reservasi</p>
-                        {{-- <a href="#testimonials" class="main-button">
-                            Buat akun
-                        </a> --}}
                         <a href="{{ route('register') }}" class="main-button">Register</a>
                     </div>
                 </div>

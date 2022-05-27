@@ -143,6 +143,18 @@
                                 <span class="hide-menu">Data Kesediaan</span>
                             </a>
                         </li>
+
+                        <li class="sidebar-item">
+                            <a href="{{ route('logout') }}"  class="sidebar-link waves-effect waves-dark sidebar-link"
+                                onclick="event.preventDefault();
+                                                document.getElementById('logout-form').submit();">
+                                <i class="fas fa-user-secret" aria-hidden="true"></i>
+                                <span class="hide-menu">{{ __('Logout') }}</span>
+                            </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
+                        </li>
                     </ul>
 
                 </nav>
