@@ -124,7 +124,7 @@
                                     <td data-scroll-reveal="enter right move 30px over 0.6s after 0.4s">
                                         <div class="text">
                                             <h4>Jadwal Berkunjung:</h4>
-                                            <input type="datetime-local" name="reservasi_jadwal_berkunjung" class="form-control @error('reservasi_jadwal_berkunjung') is-invalid @enderror" value="{{ $data->reservasi_jadwal_berkunjung }}">
+                                            <input type="datetime-local" name="reservasi_jadwal_berkunjung" class="form-control flatpickr @error('reservasi_jadwal_berkunjung') is-invalid @enderror" value="{{ $data->reservasi_jadwal_berkunjung }}">
                                             @error('reservasi_jadwal_berkunjung')
                                                 <div class="alert alert-danger" role="alert">
                                                     {{ $message }}
