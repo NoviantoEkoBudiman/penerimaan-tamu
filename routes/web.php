@@ -23,15 +23,15 @@ Route::get('/', function () {
     return view('front/beranda');
 });
 
+Route::get('pilih_login/', function(){
+    return view('front/pilih_login');
+});
 
 
 Route::resource('jadwal',JadwalPenerimaanController::class);
 
 Route::middleware(['auth','is_user'])->group(function(){
 
-    Route::get('pilih_login/', function(){
-        return view('front/pilih_login');
-    });
 
     Route::get('peta', function(){
         return view('peta/main');
