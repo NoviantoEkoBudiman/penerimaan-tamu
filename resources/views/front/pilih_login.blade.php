@@ -18,19 +18,19 @@
                     </div>
                 </div>
             </div> --}}
-            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12"
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12"
                 data-scroll-reveal="enter bottom move 30px over 0.6s after 0.4s">
                 <div class="features-item white">
                     <div class="features-icon">
                         <h2>01</h2>
                         <img src="{{ asset('pict/account.png') }}" height="64px" width="64px" alt="">
-                        <h4>Login dengan akun</h4>
-                        <p>Jika anda ingin login dengan akun penerimaan tamu, pastikan bahwa anda telah mendaftarkan akun anda.</p>
+                        <h4>Login</h4>
+                        <p>Jika anda ingin melakukan login, pastikan bahwa anda telah mendaftarkan akun anda.</p>
                         <a href="{{ route('login') }}" class="main-button">Log in</a>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12"
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12"
                 data-scroll-reveal="enter right move 30px over 0.6s after 0.4s">
                 <div class="features-item white">
                     <div class="features-icon">
