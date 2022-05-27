@@ -223,14 +223,10 @@
                                         <div class="text">
                                             <h4>Surat Permohonan Kunjungan :</h4>
                                             <a target="blank__" class="btn btn-primary btn-sm" href="{{ asset('reservasi_surat_permohonan_kunjungan/'.$data->reservasi_surat_permohonan_kunjungan) }}">Lihat Surat</a>
+                                            <input type="hidden" value="{{ $data->reservasi_surat_permohonan_kunjungan }}" name="surat_asli">
                                             <br/>
                                             <br/>
-                                            <input type="file" name="reservasi_surat_permohonan_kunjungan" accept="image/*" class="form-control @error('reservasi_surat_permohonan_kunjungan') is-invalid @enderror">
-                                            @error('reservasi_surat_permohonan_kunjungan')
-                                                <div class="alert alert-danger" role="alert">
-                                                    {{ $message }}
-                                                </div>
-                                            @enderror
+                                            <input type="file" name="reservasi_surat_permohonan_kunjungan" accept="image/*" class="form-control">
                                             <input type="hidden" name="reservasi_kepada" class="form-control" value="{{ $data->reservasi_status_id }}">
                                         </div>
                                     </td>

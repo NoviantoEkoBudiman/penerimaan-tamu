@@ -4,6 +4,34 @@
     <div class="row">
         <div class="col-sm-12">
             <div class="white-box">
+                @if(Session::has('tambah'))
+                    <script>
+                        Swal.fire({
+                            title: "Succes!",
+                            text: "Data berhasil ditambah!",
+                            icon: "success",
+                            confirmButtonText: "Tutup"
+                        })
+                    </script>
+                @elseif(Session::has('update'))
+                    <script>
+                        Swal.fire({
+                            title: "Succes!",
+                            text: "Data berhasil diupdate!",
+                            icon: "success",
+                            confirmButtonText: "Tutup"
+                        })
+                    </script>
+                @elseif(Session::has('hapus'))
+                    <script>
+                        Swal.fire({
+                            title: "Succes!",
+                            text: "Data berhasil dihapus!",
+                            icon: "success",
+                            confirmButtonText: "Tutup"
+                        })
+                    </script>
+                @endif
                 <h3 class="box-title">Tata Cara</h3>
                 
                 <!-- Button trigger modal -->
@@ -41,35 +69,29 @@
                         </div>
                     </div>
                 </div>
-  
-                    <table class="table" id="data-table">
-                        <thead>
+                <table class="table" id="data-table">
+                    <thead>
+                        <tr>
+                            <th class="border-top-0">No</th>
+                            <th class="border-top-0" width="70%">Keterangan</th>
+                            <th class="border-top-0">Status</th>
+                            <th class="border-top-0">Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($list_data as $key=>$item)
                             <tr>
-                                <th class="border-top-0">No</th>
-                                <th class="border-top-0" width="70%">Keterangan</th>
-                                <th class="border-top-0">Status</th>
-                                <th class="border-top-0">Aksi</th>
+                                <td>{{ $key+1 }}</td>
+                                <td>{{ $item->tata_cara_keterangan }}</td>
+                                <td>{{ ($item->tata_cara_aktif == 1) ? "Aktif" : "Tidak Aktif" }}</td>
+                                <td>
+                                    <a href="{{ route('tatacara.show',Crypt::encrypt($item->tata_cara_id)) }}" class="btn btn-warning btn-sm">Edit</a>
+                                    <a class="btn btn-danger btn-sm hapus" data-id="{{ Crypt::encrypt($item->tata_cara_id) }}" data-href="{{ url('hapus_tata_cara') }}">Hapus</a>
+                                </td>
                             </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($list_data as $key=>$item)
-                                <tr>
-                                    <td>{{ $key+1 }}</td>
-                                    <td>{{ $item->tata_cara_keterangan }}</td>
-                                    <td>{{ ($item->tata_cara_aktif == 1) ? "Aktif" : "Tidak Aktif" }}</td>
-                                    <td>
-                                        <a href="{{ route('tatacara.show',Crypt::encrypt($item->tata_cara_id)) }}" class="btn btn-warning btn-sm">Edit</a>
-                                        <form action="{{ route('tatacara.destroy',Crypt::encrypt($item->tata_cara_id)) }}" method="POST">
-                                            @method('DELETE')
-                                            @csrf
-                                            <button class="btn btn-danger btn-sm" type="submit">Hapus</button>
-                                        </form>
-                                    </td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                    
+                        @endforeach
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>

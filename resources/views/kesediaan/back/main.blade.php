@@ -5,7 +5,27 @@
         <div class="col-sm-12">
             <div class="white-box">
                 <h3 class="box-title">Kesediaan</h3>
-                
+                @if(Session::has('tambah'))
+                    <script>
+                        Swal.fire({
+                            title: "Succes!",
+                            text: "Data berhasil ditambah!",
+                            icon: "success",
+                            confirmButtonText: "Tutup"
+                        })
+                    </script>
+                @elseif(Session::has('update'))
+                    <script>
+                        Swal.fire({
+                            title: "Succes!",
+                            text: "Data berhasil diupdate!",
+                            icon: "success",
+                            confirmButtonText: "Tutup"
+                        })
+                    </script>
+                @else
+                    
+                @endif
                 <!-- Button trigger modal -->
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                     Tambah Data
@@ -71,11 +91,7 @@
                                     <td>
                                         <div class="input-group">
                                             <a href="{{ route('kesediaan.show',Crypt::encrypt($item->kesediaan_id)) }}" class="btn btn-warning btn-sm">Edit</a>
-                                            <form action="{{ route('kesediaan.destroy',Crypt::encrypt($item->kesediaan_id)) }}" method="POST">
-                                                @method('DELETE')
-                                                @csrf
-                                                <button class="btn btn-danger btn-sm" type="submit">Hapus</button>
-                                            </form>
+                                            <a data-id="{{ Crypt::encrypt($item->kesediaan_id) }}" class="btn btn-danger btn-sm hapus" data-href="{{ url('hapus_kesediaan') }}">Hapus</a>
                                         </div>
                                     </td>
                                 </tr>

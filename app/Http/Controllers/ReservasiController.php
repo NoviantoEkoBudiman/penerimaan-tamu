@@ -169,16 +169,55 @@ class ReservasiController extends Controller
         $reservasi                      = Reservasi::find($id)->first();
         $reservasi->reservasi_status_id = $request->reservasi_status_id;
         $reservasi->save();
+        
+        if($request->reservasi_status_id == 2){
+            $request->session()->flash('dikembalikan', 'Data reservasi telah diupdate');
+        }else{
+            $request->session()->flash('diterima', 'Data reservasi telah diupdate');
+        }
+
         return redirect(route('reservasi_back'));
     }
 
     public function perbaikan_data(Request $request, $id)
     {
+        $validated = $request->validate([
+            'reservasi_email' => 'required',
+            'reservasi_nama' => 'required',
+            'reservasi_nama_instansi' => 'required',
+            'reservasi_kontak' => 'required',
+            'reservasi_provinsi' => 'required',
+            'reservasi_alamat' => 'required',
+            'reservasi_jadwal_berkunjung' => 'required',
+            'reservasi_topik' => 'required',
+            'reservasi_tujuan' => 'required',
+            'reservasi_jumlah_peserta' => 'required',
+            'reservasi_keterangan' => 'required',
+            'reservasi_no_surat' => 'required',
+            'reservasi_kepada' => 'required',
+        ],
+        [
+            'reservasi_email.required' => 'email tidak boleh kosong',
+            'reservasi_nama.required' => 'nama tidak boleh kosong',
+            'reservasi_nama_instansi.required' => 'nama_instansi tidak boleh kosong',
+            'reservasi_kontak.required' => 'kontak tidak boleh kosong',
+            'reservasi_provinsi.required' => 'provinsi tidak boleh kosong',
+            'reservasi_alamat.required' => 'alamat tidak boleh kosong',
+            'reservasi_jadwal_berkunjung.required' => 'jadwal berkunjung tidak boleh kosong',
+            'reservasi_topik.required' => 'topik tidak boleh kosong',
+            'reservasi_tujuan.required' => 'tujuan tidak boleh kosong',
+            'reservasi_jumlah_peserta.required' => 'jumlah peserta tidak boleh kosong',
+            'reservasi_keterangan.required' => 'keterangan tidak boleh kosong',
+            'reservasi_no_surat.required' => 'no_surat tidak boleh kosong',
+            'reservasi_kepada.required' => 'kepada tidak boleh kosong',
+            'reservasi_surat_permohonan_kunjungan.mimes' => 'format surat permohonan hanya bisa JPG, JPEG, dan PNG',
+        ]);
+
         if ($request->hasFile('reservasi_surat_permohonan_kunjungan')) {
             $imageName = time().'.'.$request->reservasi_surat_permohonan_kunjungan->getClientOriginalExtension();
             $request->reservasi_surat_permohonan_kunjungan->move(public_path('/reservasi_surat_permohonan_kunjungan'), $imageName);
         }else{
-            $imageName = "";
+            $imageName = $request->surat_asli;
         }
 
         $reservasi = Reservasi::find(decrypt($id))->first();
@@ -204,17 +243,27 @@ class ReservasiController extends Controller
         $reservasi->reservasi_kepada                        = $request->reservasi_kepada;
         $reservasi->reservasi_surat_permohonan_kunjungan    = $imageName;
         $reservasi->save();
+        $request->session()->flash('sukses','Data telah diperbaiki');
         return redirect(route('riwayat'));
     }
     
     public function lengkapi($id)
     {
         $data = KesediaanTercentang::with('kesediaan')->get();
-        return view('reservasi/front/lengkapi',compact('data'));
+        $status = Reservasi::select('reservasi_status_id')->where('reservasi_id',decrypt($id))->first();
+        return view('reservasi/front/lengkapi',compact('data','status'));
     }
 
     public function upload_bukti(Request $request, $id)
     {
+        $validation = $request->validate([
+            'upload_bukti' => 'required|mimes:jpg,jpeg,png',
+        ],
+        [
+            'upload_bukti.required' => 'Foto tidak boleh kosong',
+            'upload_bukti.mimes' => 'Tipe file yang diterima hanya JPG/JPEG/PNG', 
+        ]);
+        
         if ($request->hasFile('upload_bukti')) {
             $imageName = time().'.'.$request->upload_bukti->getClientOriginalExtension();
             $request->upload_bukti->move(public_path('/upload_bukti'), $imageName);
@@ -229,11 +278,12 @@ class ReservasiController extends Controller
         return redirect(route('lengkapi',$request->segment));
     }
 
-    public function kirim_bukti($id)
+    public function kirim_bukti(Request $request, $id)
     {
         $data = Reservasi::where('reservasi_id',decrypt($id))->first();
         $data->reservasi_status_id = 4;
         $data->save();
+        $request->session()->flash('bukti_terkirim','Bukti telah dikirim');
         return redirect(route('riwayat'));
     }
 
@@ -249,6 +299,13 @@ class ReservasiController extends Controller
         $data = Reservasi::where('reservasi_id',decrypt($id))->first();
         $data->reservasi_status_id = $request->reservasi_status_id;
         $data->save();
+
+        if($request->reservasi_status_id == 6){
+            $request->session()->flash('disetujui', 'Data reservasi telah diterima');
+        }else{
+            $request->session()->flash('ditolak', 'Data reservasi telah ditolak');
+        }
+
         return redirect(route('reservasi_back'));
     }
 }

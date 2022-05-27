@@ -36,7 +36,7 @@ Route::get('menu', function(){
     return view('front/pilih_menu');
 });
 
-
+Route::get('hapus_tata_cara/{id?}', [TataCaraController::class,'destroy']);
 Route::get('tatacara/index_back',[TataCaraController::class,'indexBack'])->name('tatacara_back');
 Route::resource('tatacara',TataCaraController::class);
 Route::resource('jadwal',JadwalPenerimaanController::class);
@@ -65,4 +65,5 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 // Kesediaan
+Route::get('hapus_kesediaan/{id?}', [KesediaanController::class,'destroy']);
 Route::resource('kesediaan',KesediaanController::class);

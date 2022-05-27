@@ -2,6 +2,25 @@
 @section('content')
 <!-- ***** Features Big Item Start ***** -->
 <div class="container">
+    @if (Session::has('sukses'))
+        <script>
+            Swal.fire({
+                title: "Succes!",
+                text: "Data perbaikan telah dikirim!",
+                icon: "success",
+                confirmButtonText: "Tutup"
+            })
+        </script>
+    @elseif(Session::has('bukti_terkirim'))
+        <script>
+            Swal.fire({
+                title: "Succes!",
+                text: "Data bukti telah dikirim!",
+                icon: "success",
+                confirmButtonText: "Tutup"
+            })
+        </script>
+    @endif
     <table id="data-table" class="table table-stripped">
         <thead>
             <tr>

@@ -16,10 +16,19 @@
                 @php $hasil = null @endphp
             @endif
         @endforeach
-        <button class="btn btn-primary btn-sm" style="float: left;" {{$hasil}}>Kirim Bukti</button>
+        <button class="btn btn-primary btn-sm" style="float: left;" {{$hasil}} {{ ($status == "3") ? null : "disabled" }}>Kirim Bukti</button>
     </form>
     <br/>
     <br/>
+    @error('upload_bukti')
+        <script>
+            Swal.fire({
+                icon: 'error',
+                title: 'Kesalahan',
+                text: '{{ $message }}',
+            })
+        </script>
+    @enderror
     <table class="table table-stripped">
         <thead>
             <tr>
@@ -44,7 +53,7 @@
                             <input type="file" accept="image/png, image/jpg, image/jpeg" name="upload_bukti" class="form-control">
                             <input type="hidden" name="segment" value="{{ Request::segment(2) }}">
                         </td>
-                        <td class="text-left"><button style="vertical-align: center" class="btn btn-primary btn-sm">Upload</button></td>
+                        <td class="text-left"><button style="vertical-align: center" class="btn btn-primary btn-sm" {{ ($status == "3") ? null : "disabled" }}>Upload</button></td>
                     </tr>
                 </form>
             @endforeach

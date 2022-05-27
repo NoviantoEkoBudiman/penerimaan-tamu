@@ -4,6 +4,43 @@
     <div class="row">
         <div class="col-sm-12">
             <div class="white-box">
+                @if(Session::has('dikembalikan'))
+                    <script>
+                        Swal.fire({
+                            title: "Succes!",
+                            text: "Data reservasi telah dikembalikan!",
+                            icon: "success",
+                            confirmButtonText: "Tutup"
+                        })
+                    </script>
+                @elseif(Session::has('diterima'))
+                    <script>
+                        Swal.fire({
+                            title: "Succes!",
+                            text: "Data reservasi telah diterima!",
+                            icon: "success",
+                            confirmButtonText: "Tutup"
+                        })
+                    </script>
+                @elseif(Session::has('disetujui'))
+                    <script>
+                        Swal.fire({
+                            title: "Succes!",
+                            text: "Data reservasi telah disetujui!",
+                            icon: "success",
+                            confirmButtonText: "Tutup"
+                        })
+                    </script>
+                @elseif(Session::has('ditolak'))
+                    <script>
+                        Swal.fire({
+                            title: "Succes!",
+                            text: "Data reservasi telah ditolak!",
+                            icon: "success",
+                            confirmButtonText: "Tutup"
+                        })
+                    </script>
+                @endif
                 <h3 class="box-title">Semua Data</h3>
                 <div class="table-responsive">
                     <table class="table text-nowrap" id="data-table">

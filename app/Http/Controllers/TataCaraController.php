@@ -41,6 +41,7 @@ class TataCaraController extends Controller
         $data->tata_cara_keterangan    = $request->tata_cara_keterangan;
         $data->tata_cara_aktif  = 1;
         $data->save();
+        $request->session()->flash('tambah', 'Data berhasil ditambah!');
         return redirect(route('tatacara_back'));
     }
 
@@ -69,6 +70,7 @@ class TataCaraController extends Controller
         $data->tata_cara_keterangan = $request->tata_cara_keterangan;
         $data->tata_cara_aktif = $request->tata_cara_aktif;
         $data->save();
+        $request->session()->flash('update', 'Data berhasil ditambah!');
         return redirect(route('tatacara_back'));
     }
 
@@ -82,6 +84,6 @@ class TataCaraController extends Controller
     {
         $data = TataCara::find(decrypt($id));
         $data->delete();
-        return redirect(route('tatacara_back'));
+        return back()->with('hapus', 'Data berhasil dihapus!');
     }
 }

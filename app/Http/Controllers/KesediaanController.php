@@ -37,6 +37,7 @@ class KesediaanController extends Controller
         $kesediaan->kesediaan_syarat_upload = $request->kesediaan_syarat_upload;
         $kesediaan->kesediaan_aktif = 1;
         $kesediaan->save();
+        $request->session()->flash('tambah','Data berhasil ditambah');
         return redirect(route('kesediaan.index'));
     }
 
@@ -66,6 +67,7 @@ class KesediaanController extends Controller
         $data->kesediaan_syarat_upload = $request->kesediaan_syarat_upload;
         $data->kesediaan_aktif = $request->kesediaan_aktif;
         $data->save();
+        $request->session()->flash('update','Data berhasil diupdate');
         return redirect(route('kesediaan.index'));
     }
 
@@ -77,8 +79,8 @@ class KesediaanController extends Controller
      */
     public function destroy($id)
     {
-        $data = Kesediaan::find(decrypt($id))->first();
+        $data = Kesediaan::where('kesediaan_id',decrypt($id))->first();
         $data->delete();
-        return redirect(route('kesediaan.index'));
+        return back()->with('hapus', 'Data berhasil ditambah!');
     }
 }
