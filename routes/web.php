@@ -42,7 +42,6 @@ Route::middleware(['auth','is_user'])->group(function(){
     });
 
     Route::controller(Reservasi::class)->group(function(){
-        Route::get('lihat_reservasi/{id?}', [ReservasiController::class,'lihat_reservasi'])->name('lihat_reservasi');
         Route::put('perbaikan_data/{id?}', [ReservasiController::class,'perbaikan_data'])->name('perbaikan_data');
         Route::put('kirim_bukti/{id?}', [ReservasiController::class,'kirim_bukti'])->name('kirim_bukti');
         Route::put('upload_bukti/{id?}', [ReservasiController::class,'upload_bukti'])->name('upload_bukti');
@@ -62,6 +61,7 @@ Route::middleware(['auth','is_admin'])->group(function(){
     });
 
     Route::controller(Reservasi::class)->group(function(){
+        Route::get('lihat_reservasi/{id?}', [ReservasiController::class,'lihat_reservasi'])->name('lihat_reservasi');
         Route::put('update_tindakan_akhir/{id?}', [ReservasiController::class,'update_tindakan_akhir'])->name('update_tindakan_akhir');
         Route::get('tindakan_akhir/{id?}', [ReservasiController::class,'tindakan_akhir'])->name('tindakan_akhir');
         Route::get('reservasi/back',[ReservasiController::class,'indexBack'])->name('reservasi_back');

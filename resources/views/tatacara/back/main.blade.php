@@ -109,12 +109,12 @@
             })
 
             swalWithBootstrapButtons.fire({
-            title: 'Are you sure?',
-            text: "You won't be able to revert this!",
+            title: 'Anda yakin mau menghapus data ini?',
+            text: "Data ini tidak dapat dipulihkan!",
             icon: 'warning',
             showCancelButton: true,
-            confirmButtonText: 'Yes, delete it!',
-            cancelButtonText: 'No, cancel!',
+            confirmButtonText: 'Hapus',
+            cancelButtonText: 'Batal',
             reverseButtons: true
             }).then((result) => {
             if (result.isConfirmed) {

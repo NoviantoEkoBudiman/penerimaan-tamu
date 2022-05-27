@@ -86,7 +86,7 @@
                                 <tr>
                                     <td>{{ $key+1 }}</td>
                                     <td>{{ $item->kesediaan_keterangan }}</td>
-                                    <td>{{ ($item->kesediaan_syarat_upload == 1) ? "Wajib" : "Tidak Aktif" }}</td>
+                                    <td>{{ ($item->kesediaan_syarat_upload == 1) ? "Wajib" : "Tidak Wajib" }}</td>
                                     <td>{{ ($item->kesediaan_aktif == 1) ? "Aktif" : "Tidak Aktif" }}</td>
                                     <td>
                                         <div class="input-group">

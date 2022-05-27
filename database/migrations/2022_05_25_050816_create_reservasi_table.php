@@ -17,22 +17,19 @@ return new class extends Migration
             $table->increments('reservasi_id');
 
             // Data Reservasi
-            $table->tinyInteger('reservasi_status_id')->length(1);
+            $table->tinyInteger('reservasi_status')->length(1);
             $table->string('reservasi_email')->length(35);
-            $table->tinyInteger('reservasi_is_read')->length(1);
-            $table->tinyInteger('reservasi_is_kirim_bukti')->length(1);
-
+            
             //Data Pemohon
-            $table->string('reservasi_nama')->length(50);
-            $table->string('reservasi_nama_instansi')->length(50);
+            $table->string('reservasi_nama_dinas')->length(50);
             $table->string('reservasi_kontak')->length(14);
-            $table->string('reservasi_provinsi')->length(50);
+            $table->string('reservasi_asal_provinsi')->length(50);
             $table->string('reservasi_alamat')->length(100);
 
             // Data tujuan reservasi
             $table->dateTime('reservasi_jadwal_berkunjung');
             $table->text('reservasi_topik')->length(100);
-            $table->text('reservasi_tujuan')->length(100);
+            $table->text('reservasi_dinas_tujuan')->length(100);
             $table->tinyInteger('reservasi_jumlah_peserta')->length(4);
             $table->text('reservasi_keterangan');
 
