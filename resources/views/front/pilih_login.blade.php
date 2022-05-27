@@ -36,7 +36,7 @@
                     <div class="features-icon">
                         <h2>02</h2>
                         <img src="{{ asset('pict/register.png') }}" height="64px" width="64px" alt="">
-                        <h4>Daftar</h4>
+                        <h4>Register</h4>
                         <p>Membuat akun sistem informasi penerimaan tamu untuk melakukan reservasi</p>
                         {{-- <a href="#testimonials" class="main-button">
                             Buat akun
