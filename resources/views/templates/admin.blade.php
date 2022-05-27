@@ -271,44 +271,6 @@
     <!-- ============================================================== -->
     <!-- All Jquery -->
     <!-- ============================================================== -->
-    {{-- Fungsi hapus --}}
-    
-    <script>
-        $(".hapus").click(function(){
-            var dataId = $(this).attr('data-id');
-            var href = $(this).attr('data-href');
-            const swalWithBootstrapButtons = Swal.mixin({
-                customClass: {
-                    confirmButton: 'btn btn-success',
-                    cancelButton: 'btn btn-danger'
-                },
-                buttonsStyling: false
-            })
-
-            swalWithBootstrapButtons.fire({
-            title: 'Are you sure?',
-            text: "You won't be able to revert this!",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonText: 'Yes, delete it!',
-            cancelButtonText: 'No, cancel!',
-            reverseButtons: true
-            }).then((result) => {
-            if (result.isConfirmed) {
-                window.location.href = href + "/" + dataId;
-            } else if (
-                /* Read more about handling dismissals below */
-                result.dismiss === Swal.DismissReason.cancel
-            ) {
-                swalWithBootstrapButtons.fire(
-                    'Batal!',
-                    'Data batal dihapus',
-                    'error'
-                )
-            }
-            })
-        });
-    </script>
 
     <!-- Bootstrap tether Core JavaScript -->
     <script src="{{ asset('admin_template/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>

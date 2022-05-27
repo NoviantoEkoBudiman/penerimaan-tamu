@@ -65,5 +65,4 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 // Kesediaan
-Route::get('hapus_kesediaan/{id?}', [KesediaanController::class,'destroy']);
 Route::resource('kesediaan',KesediaanController::class);

@@ -91,7 +91,6 @@
                                     <td>
                                         <div class="input-group">
                                             <a href="{{ route('kesediaan.show',Crypt::encrypt($item->kesediaan_id)) }}" class="btn btn-warning btn-sm">Edit</a>
-                                            <a data-id="{{ Crypt::encrypt($item->kesediaan_id) }}" class="btn btn-danger btn-sm hapus" data-href="{{ url('hapus_kesediaan') }}">Hapus</a>
                                         </div>
                                     </td>
                                 </tr>
