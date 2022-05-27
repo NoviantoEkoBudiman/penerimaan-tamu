@@ -42,6 +42,9 @@ https://templatemo.com/tm-540-lava-landing-page
     <link href="{{ asset('datatable/dst/css/jquery.dataTables.min.css') }}" rel="stylesheet">
     <script src="{{ asset('datatable/dst/js/jquery.dataTables.min.js') }}"></script>
 
+    <!-- Flatpickr -->
+    <link rel="stylesheet" href="{{ asset('flatpickr/flatpickr.min.css') }}">
+    <script src="{{ asset('flatpickr/flatpickr.js') }}"></script>
 </head>
 
 <body>

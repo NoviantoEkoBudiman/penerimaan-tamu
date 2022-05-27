@@ -17,7 +17,7 @@ class JadwalPenerimaanController extends Controller
         $data = Reservasi::where('reservasi_status_id',6)->get();
         $acara = array();
         foreach($data as $val){
-            $acara = [
+            $acara[] = [
                 'title' => $val->reservasi_topik,
                 'start' => date($val->reservasi_jadwal_berkunjung),
                 'end' => date($val->reservasi_jadwal_berkunjung),

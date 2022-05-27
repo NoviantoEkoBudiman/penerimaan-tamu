@@ -124,7 +124,7 @@
                                     <td data-scroll-reveal="enter right move 30px over 0.6s after 0.4s">
                                         <div class="text">
                                             <h4>Jadwal Berkunjung:</h4>
-                                            <input type="datetime-local" name="reservasi_jadwal_berkunjung" class="form-control @error('reservasi_jadwal_berkunjung') is-invalid @enderror">
+                                            <input type="datetime-local" name="reservasi_jadwal_berkunjung" class="form-control flatpickr @error('reservasi_jadwal_berkunjung') is-invalid @enderror">
                                             @error('reservasi_jadwal_berkunjung')
                                                 <div class="alert alert-danger" role="alert">
                                                     {{ $message }}
@@ -261,4 +261,30 @@
         <!-- ***** Features Big Item End ***** -->
     </div>
 </div>
+<script>
+    $(".flatpickr").flatpickr({
+        enableTime: true,
+        minDate: "{{ date('Y-m-d') }}",
+        "disable": [
+            function(date) {
+                return (date.getDay() === 0 || date.getDay() === 6 || date.getDay() === 1);
+            }
+        ],
+        "locale": {
+            "firstDayOfWeek": 1, // start week on Monday
+            weekdays: {
+                shorthand: ["Min", "Sen", "Sel", "Rab", "Kam", "Jum", "Sab"],
+                longhand: ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"],
+            },
+            months: {
+                shorthand: [
+                    "Jan","Feb","Mar","Apr","Mei","Jun","Jul","Agu","Sep","Okt","Nov","Des",
+                ],
+                longhand: [
+                    "Januari","Februari","Maret","April","Mei","Juni","Juli","Agustus","September","Oktober","November","Desember",
+                ],
+            },
+        },
+    });
+</script>
 @endsection
