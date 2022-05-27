@@ -68,7 +68,6 @@ https://templatemo.com/tm-540-lava-landing-page
                                 <li><a href="{{ url('/') }}" class="menu-item">Beranda</a></li>
                                 <li><a href="{{ url('menu') }}" class="menu-item">Reservasi</a></li>
                                 <li><a href="{{ route('jadwal.index') }}" class="menu-item">Jadwal Penerimaan</a></li>
-                                <li><a href="{{ route('gallery.index') }}" class="menu-item">Galeri</a></li>
                                 <li><a href="{{ url('peta') }}" class="menu-item">Peta Balai Kota</a></li>
                                 <li><a href="{{ url('pilih_login') }}" class="menu-item">Login</a></li>
                             </ul>
@@ -77,7 +76,6 @@ https://templatemo.com/tm-540-lava-landing-page
                                 <li><a href="{{ url('/') }}" class="menu-item">Beranda</a></li>
                                 <li><a href="{{ url('menu') }}" class="menu-item">Reservasi</a></li>
                                 <li><a href="{{ route('jadwal.index') }}" class="menu-item">Jadwal Penerimaan</a></li>
-                                <li><a href="{{ route('gallery.index') }}" class="menu-item">Galeri</a></li>
                                 <li><a href="{{ url('peta') }}" class="menu-item">Peta Balai Kota</a></li>
                                 <li>
                                     <a href="{{ route('logout') }}"

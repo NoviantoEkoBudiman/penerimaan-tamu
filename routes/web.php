@@ -5,7 +5,6 @@ use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\TataCaraController;
 use App\Http\Controllers\ReservasiController;
 use App\Http\Controllers\JadwalPenerimaanController;
-use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\InboxController;
 use App\Http\Controllers\KesediaanController;
 
@@ -41,7 +40,6 @@ Route::get('menu', function(){
 Route::get('tatacara/index_back',[TataCaraController::class,'indexBack'])->name('tatacara_back');
 Route::resource('tatacara',TataCaraController::class);
 Route::resource('jadwal',JadwalPenerimaanController::class);
-Route::resource('gallery',GalleryController::class);
 
 Route::get('lihat_reservasi/{id?}', [ReservasiController::class,'lihat_reservasi'])->name('lihat_reservasi');
 Route::put('perbaikan_data/{id?}', [ReservasiController::class,'perbaikan_data'])->name('perbaikan_data');

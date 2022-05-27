@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Reservasi;
 
 class JadwalPenerimaanController extends Controller
 {
@@ -13,7 +14,17 @@ class JadwalPenerimaanController extends Controller
      */
     public function index()
     {
-        return view('jadwal/front/main');
+        $data = Reservasi::where('reservasi_status_id',6)->get();
+        $acara = array();
+        foreach($data as $val){
+            $acara = [
+                'title' => $val->reservasi_topik,
+                'start' => date($val->reservasi_jadwal_berkunjung),
+                'end' => date($val->reservasi_jadwal_berkunjung),
+            ];
+        }
+        // dd($acara);
+        return view('jadwal/front/main',compact('acara'));
     }
 
     /**

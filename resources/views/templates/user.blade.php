@@ -65,7 +65,7 @@ https://templatemo.com/tm-540-lava-landing-page
                     <nav class="main-nav">
                         <!-- ***** Logo Start ***** -->
                         <a href="{{ url('/') }}" class="logo">
-                            <img src="{{ asset('pict/logo-penerimaan-tamu.svg')}}" height="100px" width="150px" alt="">
+                            <img src="{{ asset('pict/logo-penerimaan-tamu.svg')}}" height="100px" width="131px" alt="">
                         </a>
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
@@ -75,7 +75,6 @@ https://templatemo.com/tm-540-lava-landing-page
                                 <li><a href="{{ url('/') }}" class="menu-item">Beranda</a></li>
                                 <li><a href="{{ url('menu') }}" class="menu-item">Reservasi</a></li>
                                 <li><a href="{{ route('jadwal.index') }}" class="menu-item">Jadwal Penerimaan</a></li>
-                                <li><a href="{{ route('gallery.index') }}" class="menu-item">Galeri</a></li>
                                 <li><a href="{{ url('peta') }}" class="menu-item">Peta Balai Kota</a></li>
                                 <li><a href="{{ url('pilih_login') }}" class="menu-item">Login</a></li>
                             </ul>
@@ -84,7 +83,6 @@ https://templatemo.com/tm-540-lava-landing-page
                                 <li><a href="{{ url('/') }}" class="menu-item">Beranda</a></li>
                                 <li><a href="{{ url('menu') }}" class="menu-item">Reservasi</a></li>
                                 <li><a href="{{ route('jadwal.index') }}" class="menu-item">Jadwal Penerimaan</a></li>
-                                <li><a href="{{ route('gallery.index') }}" class="menu-item">Galeri</a></li>
                                 <li><a href="{{ url('peta') }}" class="menu-item">Peta Balai Kota</a></li>
                                 <li>
                                     <a href="{{ route('logout') }}"
@@ -381,7 +379,7 @@ https://templatemo.com/tm-540-lava-landing-page
 
     <!-- SweetAlert -->
 
-
+    <script type="javascript" src="https://cdn.jsdelivr.net/npm/@barba/core@2.9.7"></script>
     <!-- Bootstrap -->
     <script src="{{ asset('user_template/assets/js/popper.js') }}"></script>
     <script src="{{ asset('user_template/assets/js/bootstrap.min.js') }}"></script>
