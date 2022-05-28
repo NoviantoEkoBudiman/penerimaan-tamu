@@ -15,15 +15,9 @@
                         <label class="col-md-12 p-0">Data Pemohon</label>
                     </div>
                     <div class="form-group mb-4">
-                        <label class="col-md-12 p-0">Nama:</label>
+                        <label class="col-md-12 p-0">Nama Dinas Pemohon:</label>
                         <div class="col-md-12 border-bottom p-0">
-                            <input type="text" class="form-control" value="{{ $data->reservasi_nama }}" disabled>
-                        </div>
-                    </div>
-                    <div class="form-group mb-4">
-                        <label class="col-md-12 p-0">Nama Instansi Pemohon:</label>
-                        <div class="col-md-12 border-bottom p-0">
-                            <input type="text" class="form-control" value="{{ $data->reservasi_nama_instansi }}" disabled>
+                            <input type="text" class="form-control" value="{{ $data->reservasi_nama_dinas }}" disabled>
                         </div>
                     </div>
                     <div class="form-group mb-4">
@@ -35,7 +29,7 @@
                     <div class="form-group mb-4">
                         <label class="col-md-12 p-0">Asal Provinsi:</label>
                         <div class="col-md-12 border-bottom p-0">
-                            <input type="text" class="form-control" value="{{ $data->reservasi_provinsi }}" disabled>
+                            <input type="text" class="form-control" value="{{ $data->reservasi_asal_provinsi }}" disabled>
                         </div>
                     </div>
                     <div class="form-group mb-4">
@@ -63,7 +57,7 @@
                     <div class="form-group mb-4">
                         <label class="col-md-12 p-0">tujuan OPD yang akan dikunjungi:</label>
                         <div class="col-md-12 border-bottom p-0">
-                            <input type="text" class="form-control" value="{{ $data->reservasi_tujuan }}" disabled>
+                            <input type="text" class="form-control" value="{{ $data->reservasi_dinas_tujuan }}" disabled>
                         </div>
                     </div>
                     <div class="form-group mb-4">
@@ -117,7 +111,7 @@
                     <div class="form-group mb-4">
                         <label class="col-md-12 p-0">Tindakan</label>
                     </div>
-                    <select class="form-control" name="reservasi_status_id">
+                    <select class="form-control" name="reservasi_status">
                         <option value="6">Disetujui</option>
                         <option value="7">Ditolak</option>
                     </select>

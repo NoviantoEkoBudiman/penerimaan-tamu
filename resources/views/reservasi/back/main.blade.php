@@ -47,8 +47,8 @@
                         <thead>
                             <tr>
                                 <th class="border-top-0">No</th>
-                                <th class="border-top-0">Nama</th>
-                                <th class="border-top-0">Instansi</th>
+                                <th class="border-top-0">Nama Dinas</th>
+                                <th class="border-top-0">Topik</th>
                                 <th class="border-top-0">Status</th>
                                 <th class="border-top-0">Aksi</th>
                             </tr>
@@ -57,29 +57,29 @@
                             @foreach ($datas as $key=>$data)
                                 <tr>
                                     <td>{{ $key+1 }}</td>
-                                    <td>{{ $data->reservasi_nama }}</td>
-                                    <td>{{ $data->reservasi_nama_instansi }}</td>
+                                    <td>{{ $data->reservasi_nama_dinas }}</td>
+                                    <td>{{ $data->reservasi_topik }}</td>
                                     <td>
-                                        @if($data->reservasi_status_id == 1)
+                                        @if($data->reservasi_status == 1)
                                             {{ "Baru" }}
-                                        @elseif($data->reservasi_status_id == 2)
+                                        @elseif($data->reservasi_status == 2)
                                             {{ "Dikembalikan" }}
-                                        @elseif($data->reservasi_status_id == 3)
+                                        @elseif($data->reservasi_status == 3)
                                             {{ "Diterima" }}
-                                        @elseif($data->reservasi_status_id == 4)
+                                        @elseif($data->reservasi_status == 4)
                                             {{ "Bukti Dikirim" }}
-                                        @elseif($data->reservasi_status_id == 5)
+                                        @elseif($data->reservasi_status == 5)
                                             {{ "Data Perbaikan Terkirim" }}
-                                        @elseif($data->reservasi_status_id == 6)
+                                        @elseif($data->reservasi_status == 6)
                                             {{ "Disetujui" }}
-                                        @elseif($data->reservasi_status_id == 7)
+                                        @elseif($data->reservasi_status == 7)
                                             {{ "Ditolak" }}
                                         @endif
                                     </td>
                                     <td>
-                                        @if($data->reservasi_status_id == 1 || $data->reservasi_status_id == 5)
+                                        @if($data->reservasi_status == 1 || $data->reservasi_status == 5)
                                             <a class="btn btn-sm btn-warning" href="{{ route('reservasi.edit',Crypt::encrypt($data->reservasi_id)) }}">Tindakan</a> |
-                                        @elseif($data->reservasi_status_id == 4)
+                                        @elseif($data->reservasi_status == 4)
                                             <a class="btn btn-sm btn-warning" href="{{ route('tindakan_akhir',Crypt::encrypt($data->reservasi_id)) }}">Tindakan</a> |
                                         @else
                                             <a class="btn btn-sm btn-warning disabled">Tindakan</a> |

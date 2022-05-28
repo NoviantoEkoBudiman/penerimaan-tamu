@@ -16,7 +16,7 @@
                 @php $hasil = null @endphp
             @endif
         @endforeach
-        <button class="btn btn-primary btn-sm" style="float: left;" {{$hasil}} {{ ($status == "3") ? null : "disabled" }}>Kirim Bukti</button>
+        <button class="btn btn-primary btn-sm" style="float: left;" {{$hasil}} {{ ($status->reservasi_status == 3) ? null : "disabled" }}>Kirim Bukti</button>
     </form>
     <br/>
     <br/>
@@ -53,7 +53,7 @@
                             <input type="file" accept="image/png, image/jpg, image/jpeg" name="upload_bukti" class="form-control">
                             <input type="hidden" name="segment" value="{{ Request::segment(2) }}">
                         </td>
-                        <td class="text-left"><button style="vertical-align: center" class="btn btn-primary btn-sm" {{ ($status == "3") ? null : "disabled" }}>Upload</button></td>
+                        <td class="text-left"><button style="vertical-align: center" class="btn btn-primary btn-sm" {{ ($status->reservasi_status == 3) ? null : "disabled" }}>Upload</button></td>
                     </tr>
                 </form>
             @endforeach

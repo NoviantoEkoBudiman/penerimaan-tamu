@@ -36,11 +36,11 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td data-scroll-reveal="enter right move 30px over 0.6s after 0.4s">
+                                    <td data-scroll-reveal="enter right move 30px over 0.6s after 0.5s">
                                         <div class="text">
-                                            <h4>Nama:</h4>
-                                            <input type="text" name="reservasi_nama" class="form-control @error('reservasi_nama') is-invalid @enderror" value="{{ $data->reservasi_nama }}">
-                                            @error('reservasi_nama')
+                                            <h4>Nama Instansi:</h4>
+                                            <input type="text" name="reservasi_nama_dinas" class="form-control @error('reservasi_nama_dinas') is-invalid @enderror" value="{{ Auth::user()->user_nama_dinas }}" readonly>
+                                            @error('reservasi_nama_dinas')
                                                 <div class="alert alert-danger" role="alert">
                                                     {{ $message }}
                                                 </div>
@@ -51,21 +51,8 @@
                                 <tr>
                                     <td data-scroll-reveal="enter right move 30px over 0.6s after 0.5s">
                                         <div class="text">
-                                            <h4>Nama Instansi Pemohon:</h4>
-                                            <input type="text" name="reservasi_nama_instansi" class="form-control @error('reservasi_nama_instansi') is-invalid @enderror" value="{{ $data->reservasi_nama_instansi }}">
-                                            @error('reservasi_nama_instansi')
-                                                <div class="alert alert-danger" role="alert">
-                                                    {{ $message }}
-                                                </div>
-                                            @enderror
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td data-scroll-reveal="enter right move 30px over 0.6s after 0.5s">
-                                        <div class="text">
-                                            <h4>Email Instansi Pemohon:</h4>
-                                            <input type="email" name="reservasi_email" class="form-control @error('reservasi_email') is-invalid @enderror" value="{{ $data->reservasi_email }}" readonly>
+                                            <h4>Email:</h4>
+                                            <input type="email" name="reservasi_email" class="form-control @error('reservasi_email') is-invalid @enderror" value="{{ Auth::user()->email }}" readonly>
                                             @error('reservasi_email')
                                                 <div class="alert alert-danger" role="alert">
                                                     {{ $message }}
@@ -78,7 +65,7 @@
                                     <td data-scroll-reveal="enter right move 30px over 0.6s after 0.6s">
                                         <div class="text">
                                             <h4>Nomor Kontak (dapat menerima panggilan):</h4>
-                                            <input type="number" minlength="12" maxlength="14" name="reservasi_kontak" class="form-control @error('reservasi_kontak') is-invalid @enderror" value="{{ $data->reservasi_kontak }}">
+                                            <input type="number" minlength="12" maxlength="14" name="reservasi_kontak" class="form-control @error('reservasi_kontak') is-invalid @enderror" value="{{ Auth::user()->user_kontak }}" readonly>
                                             @error('reservasi_kontak')
                                                 <div class="alert alert-danger" role="alert">
                                                     {{ $message }}
@@ -91,8 +78,8 @@
                                     <td data-scroll-reveal="enter right move 30px over 0.6s after 0.6s">
                                         <div class="text">
                                             <h4>Asal Provinsi:</h4>
-                                            <input type="text" name="reservasi_provinsi" class="form-control @error('reservasi_provinsi') is-invalid @enderror" value="{{ $data->reservasi_provinsi }}">
-                                            @error('reservasi_provinsi')
+                                            <input type="text" name="reservasi_asal_provinsi" class="form-control @error('reservasi_asal_provinsi') is-invalid @enderror" value="{{ Auth::user()->user_asal_provinsi }}" readonly>
+                                            @error('reservasi_asal_provinsi')
                                                 <div class="alert alert-danger" role="alert">
                                                     {{ $message }}
                                                 </div>
@@ -104,7 +91,7 @@
                                     <td data-scroll-reveal="enter right move 30px over 0.6s after 0.6s">
                                         <div class="text">
                                             <h4>Alamat instansi:</h4>
-                                            <input type="text" name="reservasi_alamat" class="form-control @error('reservasi_alamat') is-invalid @enderror" value="{{ $data->reservasi_alamat }}">
+                                            <input type="text" name="reservasi_alamat" class="form-control @error('reservasi_alamat') is-invalid @enderror" value="{{ Auth::user()->user_alamat }}" readonly>
                                             @error('reservasi_alamat')
                                                 <div class="alert alert-danger" role="alert">
                                                     {{ $message }}
@@ -150,8 +137,8 @@
                                     <td data-scroll-reveal="enter right move 30px over 0.6s after 0.6s">
                                         <div class="text">
                                             <h4>tujuan OPD yang akan dikunjungi:</h4>
-                                            <input type="text" name="reservasi_tujuan" class="form-control @error('reservasi_tujuan') is-invalid @enderror" value="{{ $data->reservasi_tujuan }}">
-                                            @error('reservasi_tujuan')
+                                            <input type="text" name="reservasi_dinas_tujuan" class="form-control @error('reservasi_dinas_tujuan') is-invalid @enderror" value="{{ $data->reservasi_dinas_tujuan }}">
+                                            @error('reservasi_dinas_tujuan')
                                                 <div class="alert alert-danger" role="alert">
                                                     {{ $message }}
                                                 </div>
@@ -227,7 +214,7 @@
                                             <br/>
                                             <br/>
                                             <input type="file" name="reservasi_surat_permohonan_kunjungan" accept="image/*" class="form-control">
-                                            <input type="hidden" name="reservasi_kepada" class="form-control" value="{{ $data->reservasi_status_id }}">
+                                            <input type="hidden" name="reservasi_kepada" class="form-control" value="{{ $data->reservasi_status }}">
                                         </div>
                                     </td>
                                 </tr>

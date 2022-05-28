@@ -242,7 +242,7 @@ class ReservasiController extends Controller
     public function lengkapi($id)
     {
         $data = KesediaanTercentang::with('kesediaan')->get();
-        $status = Reservasi::select('reservasi_status')->where('reservasi_id',decrypt($id))->first();
+        $status = Reservasi::where('reservasi_id',decrypt($id))->first();
         return view('reservasi/front/lengkapi',compact('data','status'));
     }
 

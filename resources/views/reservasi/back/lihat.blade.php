@@ -12,15 +12,9 @@
                     <label class="col-md-12 p-0">Data Pemohon</label>
                 </div>
                 <div class="form-group mb-4">
-                    <label class="col-md-12 p-0">Nama:</label>
+                    <label class="col-md-12 p-0">Nama Dinas:</label>
                     <div class="col-md-12 border-bottom p-0">
-                        <input type="text" class="form-control" value="{{ $data->reservasi_nama }}" disabled>
-                    </div>
-                </div>
-                <div class="form-group mb-4">
-                    <label class="col-md-12 p-0">Nama Instansi Pemohon:</label>
-                    <div class="col-md-12 border-bottom p-0">
-                        <input type="text" class="form-control" value="{{ $data->reservasi_nama_instansi }}" disabled>
+                        <input type="text" class="form-control" value="{{ $data->reservasi_nama_dinas }}" disabled>
                     </div>
                 </div>
                 <div class="form-group mb-4">
@@ -32,7 +26,7 @@
                 <div class="form-group mb-4">
                     <label class="col-md-12 p-0">Asal Provinsi:</label>
                     <div class="col-md-12 border-bottom p-0">
-                        <input type="text" class="form-control" value="{{ $data->reservasi_provinsi }}" disabled>
+                        <input type="text" class="form-control" value="{{ $data->reservasi_asal_provinsi }}" disabled>
                     </div>
                 </div>
                 <div class="form-group mb-4">
@@ -60,7 +54,7 @@
                 <div class="form-group mb-4">
                     <label class="col-md-12 p-0">tujuan OPD yang akan dikunjungi:</label>
                     <div class="col-md-12 border-bottom p-0">
-                        <input type="text" class="form-control" value="{{ $data->reservasi_tujuan }}" disabled>
+                        <input type="text" class="form-control" value="{{ $data->reservasi_dinas_tujuan }}" disabled>
                     </div>
                 </div>
                 <div class="form-group mb-4">
@@ -100,17 +94,17 @@
                     </div>
                 </div>
                 <hr>                    
-                    <div class="form-group mb-4">
-                        <label class="col-md-12 p-0">Upload Kesediaan</label>
-                    </div>
-                    <table class="table">
-                        @foreach($KesediaanTercentang as $item)
-                            <tr>
-                                <td>{{ $item->kesediaan->kesediaan_keterangan }}</td>
-                                <td><a target="_blank" href="{{ asset('upload_bukti/'.$item->file_upload) }}" class="btn btn-primary btn-sm">Lihat</a></td>
-                            </tr>
-                        @endforeach
-                    </table>
+                <div class="form-group mb-4">
+                    <label class="col-md-12 p-0">Upload Kesediaan</label>
+                </div>
+                <table class="table">
+                    @foreach($KesediaanTercentang as $item)
+                        <tr>
+                            <td>{{ $item->kesediaan->kesediaan_keterangan }}</td>
+                            <td><a target="_blank" href="{{ asset('upload_bukti/'.$item->file_upload) }}" class="btn btn-primary btn-sm">Lihat</a></td>
+                        </tr>
+                    @endforeach
+                </table>
             </div>
         </div>
     </div>

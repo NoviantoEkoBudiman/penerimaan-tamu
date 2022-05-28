@@ -36,26 +36,26 @@
                 <tr class="text-left">
                     <td>{{ $key+1 }}</td>
                     <td>{{ $item->reservasi_nama }}</td>
-                    <td>{{ $item->reservasi_nama_instansi }}</td>
+                    <td>{{ $item->reservasi_nama_dinas }}</td>
                     <td>
-                        @if($item->reservasi_status_id == 1)
+                        @if($item->reservasi_status == 1)
                             {{ "Baru" }}
-                        @elseif($item->reservasi_status_id == 2)
+                        @elseif($item->reservasi_status == 2)
                             {{ "Dikembalikan" }}
-                        @elseif($item->reservasi_status_id == 3)
+                        @elseif($item->reservasi_status == 3)
                             {{ "Diterima" }}
-                        @elseif($item->reservasi_status_id == 4)
+                        @elseif($item->reservasi_status == 4)
                             {{ "Bukti Dikirim" }}
-                        @elseif($item->reservasi_status_id == 5)
+                        @elseif($item->reservasi_status == 5)
                             {{ "Data Perbaikan Terkirim" }}
-                        @elseif($item->reservasi_status_id == 6)
+                        @elseif($item->reservasi_status == 6)
                             {{ "Diterima" }}
-                        @elseif($item->reservasi_status_id == 7)
+                        @elseif($item->reservasi_status == 7)
                             {{ "Ditolak" }}
                         @endif
                     <td>
-                        <a href="{{ route('reservasi.show', Crypt::encrypt($item->reservasi_id)) }}" class="btn btn-sm btn-primary {{ ($item->reservasi_status_id == 2) ? null : "disabled" }}">Perbaiki</a>
-                        <a href="{{ route('lengkapi', Crypt::encrypt($item->reservasi_id)) }}" class="btn btn-sm btn-primary {{ ($item->reservasi_status_id == 3) ? null : "disabled" }}">Lengkapi</a>
+                        <a href="{{ route('reservasi.show', Crypt::encrypt($item->reservasi_id)) }}" class="btn btn-sm btn-primary {{ ($item->reservasi_status == 2) ? null : "disabled" }}">Perbaiki</a>
+                        <a href="{{ route('lengkapi', Crypt::encrypt($item->reservasi_id)) }}" class="btn btn-sm btn-primary {{ ($item->reservasi_status == 3) ? null : "disabled" }}">Lengkapi</a>
                     </td>
                 </tr>                
             @endforeach
